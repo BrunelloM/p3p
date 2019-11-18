@@ -1,0 +1,79 @@
+.list-view .list-cell:even {
+    -fx-background-color: white;
+}
+
+.list-view .list-cell:odd {
+    -fx-background-color: white;
+}
+
+.list-view .list-cell:selected {
+    -fx-background-color: lightblue;
+}
+
+.list-view .scroll-pane {
+    -fx-background-color: transparent;
+}
+
+.list-view .scroll-bar .increment-button {
+    visibility: hidden;
+}
+
+.list-view .scroll-bar .decrement-button {
+    visibility: hidden;
+}
+
+.list-view .scroll-bar:vertical {
+    -fx-background-color: transparent;
+}
+
+.list-view .scroll-bar:vertical .track-background {
+    visibility: hidden;
+}
+
+.list-view .scroll-bar:vertical .track {
+    visibility: hidden;
+}
+
+.list-view .scroll-bar:vertical .thumb {
+    -fx-background-color: #d50000;
+}
+
+.bottom-only-border {
+    -fx-border-style: solid;
+    -fx-border-color: transparent transparent #030303 transparent;
+    -fx-border-width: 1;
+}
+
+.no-border {
+    -fx-border-width: 0;
+    -fx-border-color: transparent;
+}
+
+
+/*
+** Side buttons stylesheets. It handles background colors and icon colors too
+*/
+.toggle-button:focused,
+.toggle-button {
+    -fx-text-fill: white;
+    -fx-background-color: transparent;
+    -fx-background-radius: 0;
+}
+
+.toggle-button:selected {
+    -fx-background-color: white;
+    -fx-text-fill: black;
+}
+
+/** Inbox side button selected/unselected effect  **/
+.inbox-btn .image-view { -fx-image: url(img/mail_icon.png) }
+.inbox-btn:selected .image-view{-fx-image: url(img/mail_icon_black.png) }
+/** Send side button selected/unselected effect  **/
+.sent-btn .image-view { -fx-image: url(img/send_icon.png) }
+.sent-btn:selected .image-view{-fx-image: url(img/send_icon_black.png) }
+/** Special side button selected/unselected effect  **/
+.special-btn .image-view { -fx-image: url(img/star_icon.png) }
+.special-btn:selected .image-view{-fx-image: url(img/star_icon_black.png) }
+/** Trash side button selected/unselected effect  **/
+.trash-btn .image-view { -fx-image: url(img/delete_icon.png) }
+.trash-btn:selected .image-view{-fx-image: url(img/delete_icon_black.png) }

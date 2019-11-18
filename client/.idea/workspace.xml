@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="87fd6dd3-ab81-4c9f-83f1-579beefd1999" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="FxmlFile" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1TTGT1HZ3JfWHAGq2hPqq5V0CST" />
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.emailclient.beans" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Application.ApplicationStarter">
+    <configuration name="ApplicationStarter" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.emailclient.ApplicationStarter" />
+      <module name="com.emailclient.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.emailclient.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="HelloFX" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.emailclient.HelloFX" />
+      <module name="com.emailclient.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.emailclient.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.ApplicationStarter" />
+        <item itemvalue="Application.HelloFX" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="87fd6dd3-ab81-4c9f-83f1-579beefd1999" name="Default Changelist" comment="" />
+      <created>1573476675787</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1573476675787</updated>
+      <workItem from="1573476680126" duration="1317000" />
+      <workItem from="1573478615735" duration="221000" />
+      <workItem from="1573483596377" duration="933000" />
+      <workItem from="1573498782890" duration="3634000" />
+      <workItem from="1573548843077" duration="1341000" />
+      <workItem from="1573552199420" duration="3828000" />
+      <workItem from="1573556171326" duration="5922000" />
+      <workItem from="1573573318214" duration="739000" />
+      <workItem from="1573663851977" duration="5578000" />
+      <workItem from="1573724262730" duration="305000" />
+      <workItem from="1573729673484" duration="55000" />
+      <workItem from="1573729750354" duration="15000" />
+      <workItem from="1573835122357" duration="73000" />
+      <workItem from="1573842182143" duration="7000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+</project>
