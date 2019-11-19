@@ -16,6 +16,10 @@ public class User implements Serializable {
         this.address = address;
     }
 
+    public User(String address) {
+        this.address = address;
+    }
+
     public int getId() {
         return id;
     }
@@ -46,5 +50,24 @@ public class User implements Serializable {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        assert obj != null;
+        if(obj instanceof User) {
+            return ((User) obj).getAddress().equals(this.address);
+        }
+        return false;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", address='" + address + '\'' +
+                '}';
     }
 }

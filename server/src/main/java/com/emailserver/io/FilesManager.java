@@ -1,4 +1,4 @@
-package com.emailserver.io.filesys;
+package com.emailserver.io;
 
 import com.emailserver.beans.Email;
 import com.emailserver.beans.User;
@@ -176,7 +176,7 @@ public class FilesManager {
      * use operations like map, filter ecc..
      * @return A list of users on the USERS_FILE
      */
-    private static List<User> getUsers() {
+    public static List<User> getUsers() {
         try {
             Stream<String> userStream = Files.lines(Paths.get(DATA_FOLDER + USERS_FILE));
             return userStream

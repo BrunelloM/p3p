@@ -1,4 +1,4 @@
-package com.emailserver.concurrent;
+package com.emailserver.core;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;

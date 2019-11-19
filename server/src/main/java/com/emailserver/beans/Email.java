@@ -8,7 +8,7 @@ import java.util.Date;
 public class Email implements Serializable {
 
     private long id;
-    private transient User sender;
+    private User sender;
     private User[] receivers;
     private Date dateSent;
     private String subject;
@@ -18,6 +18,13 @@ public class Email implements Serializable {
         this.sender = sender;
         this.receivers = receivers;
         this.dateSent = dateSent;
+        this.subject = subject;
+        this.text = text;
+    }
+
+    public Email(User sender, User[] receivers, String subject, String text) {
+        this.sender = sender;
+        this.receivers = receivers;
         this.subject = subject;
         this.text = text;
     }
