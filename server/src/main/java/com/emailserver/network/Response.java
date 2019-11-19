@@ -44,15 +44,21 @@ public class Response implements Serializable {
     }
 
     public void setCompletedState() {
-        type = ResponseType.DONE;
-        message = "OK";
-        payload = null;
+        this.type = ResponseType.DONE;
+        this.message = "OK";
+        this.payload = null;
     }
 
     public void setErrorState(String message) {
-        type = ResponseType.ERROR;
+        this.type = ResponseType.ERROR;
         this.message = message;
-        payload = null;
+        this.payload = null;
+    }
+
+    public void setNextState() {
+        this.type = ResponseType.NEXT;
+        this.message = "OK";
+        this.payload = null;
     }
 
     @Override

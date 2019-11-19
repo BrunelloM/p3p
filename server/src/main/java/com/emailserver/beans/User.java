@@ -70,4 +70,8 @@ public class User implements Serializable {
                 ", address='" + address + '\'' +
                 '}';
     }
+
+    public User clone() {
+        return new User(id, name, surname, address);
+    }
 }

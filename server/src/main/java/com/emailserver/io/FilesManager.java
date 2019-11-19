@@ -2,6 +2,8 @@ package com.emailserver.io;
 
 import com.emailserver.beans.Email;
 import com.emailserver.beans.User;
+import com.emailserver.core.UsersTable;
+
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -40,18 +42,17 @@ public class FilesManager {
      * @param toWrite
      */
     public static synchronized void saveEmail(Email toWrite) {
-        Date today = new Date();
-        toWrite.setId(today.getTime());
         try {
-            String filePath = String.format(PARAM_PATH, toWrite.getSender().getId(), SENT_FOLDER, toWrite.getId());
+            toWrite.setupDateAndId();
+            String filePath = String.format(PARAM_PATH, UsersTable.get(toWrite.getSender()).get().getId(), SENT_FOLDER, toWrite.getId());
             FileOutputStream fos = new FileOutputStream(filePath);
             ObjectOutputStream oos = new ObjectOutputStream(fos);
             oos.writeObject(toWrite);
             oos.close();
             fos.close();
             // Save the email in the corresponding inbox folder of each receiver
-            for(User receiver : toWrite.getReceivers()) {
-                filePath = String.format(PARAM_PATH, receiver.getId(), RECEIVED_FOLDER, toWrite.getId());
+            for(String recAddress : toWrite.getRecipients()) {
+                filePath = String.format(PARAM_PATH, UsersTable.get(recAddress).get().getId(), RECEIVED_FOLDER, toWrite.getId());
                 fos = new FileOutputStream(filePath);
                 oos = new ObjectOutputStream(fos);
                 oos.writeObject(toWrite);

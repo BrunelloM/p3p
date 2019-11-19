@@ -7,23 +7,23 @@ import java.io.Serializable;
 
 public class Request implements Serializable {
 
-    private User identity;
+    private String identity;
     private RequestType type;
     private Email emailParam;           // If the request type is just a data request, then ignore this field
 
-    public Request(User identity, RequestType type, Email emailParam) {
+    public Request(String identity, RequestType type, Email emailParam) {
         this.identity = identity;
         this.type = type;
         this.emailParam = emailParam;
     }
 
-    public Request(User identity, RequestType type) {
+    public Request(String identity, RequestType type) {
         this.identity = identity;
         this.type = type;
         this.emailParam = null;
     }
 
-    public User getIdentity() {
+    public String getIdentity() {
         return identity;
     }
 

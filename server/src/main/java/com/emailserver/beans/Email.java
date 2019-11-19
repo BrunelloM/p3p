@@ -1,32 +1,40 @@
 package com.emailserver.beans;
 
-import com.sun.tools.javac.util.List;
-
 import java.io.Serializable;
 import java.util.Date;
 
 public class Email implements Serializable {
 
     private long id;
-    private User sender;
-    private User[] receivers;
+    private String sender;
+    private String[] recipients;
     private Date dateSent;
     private String subject;
     private String text;
 
-    public Email(User sender, User[] receivers, Date dateSent, String subject, String text) {
+    public Email(long id, String sender, String[] recipients, Date dateSent, String subject, String text) {
+        this.id = id;
         this.sender = sender;
-        this.receivers = receivers;
+        this.recipients = recipients;
         this.dateSent = dateSent;
         this.subject = subject;
         this.text = text;
     }
 
-    public Email(User sender, User[] receivers, String subject, String text) {
+    public Email(String sender, String[] recipients, String subject, String text) {
+        this.dateSent = new Date();
+        this.id = dateSent.getTime();
         this.sender = sender;
-        this.receivers = receivers;
+        this.recipients = recipients;
         this.subject = subject;
         this.text = text;
+    }
+
+    public void setupDateAndId() {
+        if(this.dateSent == null) {
+            this.dateSent = new Date();
+            this.id = dateSent.getTime();
+        }
     }
 
     public long getId() {
@@ -37,20 +45,20 @@ public class Email implements Serializable {
         this.id = id;
     }
 
-    public User getSender() {
+    public String getSender() {
         return sender;
     }
 
-    public void setSender(User sender) {
+    public void setSender(String sender) {
         this.sender = sender;
     }
 
-    public User[] getReceivers() {
-        return receivers;
+    public String[] getRecipients() {
+        return recipients;
     }
 
-    public void setReceivers(User[] receivers) {
-        this.receivers = receivers;
+    public void setRecipients(String[] recipients) {
+        this.recipients = recipients;
     }
 
     public Date getDateSent() {
@@ -77,8 +85,8 @@ public class Email implements Serializable {
         this.text = text;
     }
 
-    public String toString() {
-        return "Mail: " + getSender().getAddress() + ", " + getText();
+    public Email clone() {
+        return new Email(id, sender, recipients, dateSent, subject, text);
     }
 
 }

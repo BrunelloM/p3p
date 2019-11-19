@@ -2,7 +2,9 @@ package com.emailserver.network;
 
 public enum RequestType {
     SEND,
-    DELETE,
+    DEL_INBOX,
+    DEL_SPECIAL,
+    DEL_SENT,
     STAR,
     INBOX,
     SENT,
