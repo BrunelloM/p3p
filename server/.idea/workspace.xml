@@ -2,6 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c49b7bc0-0c2f-4bb2-855e-1cdffeb53faa" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/emailserver/model/Messages.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/emailserver/model/MessagesList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/emailserver/network/Protocol.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/emailserver/ui/MainApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/emailserver/ui/MainController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/emailserver/main.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/emailserver/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/network/ProtocolTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.bin" afterDir="false" />
@@ -9,34 +17,20 @@
       <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/classAnalysis.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/emailserver/ApplicationStarter.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/emailserver/ApplicationStarter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/emailserver/beans/Email.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/emailserver/beans/Email.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/emailserver/beans/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/emailserver/beans/User.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/emailserver/core/RequestHandler$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/emailserver/core/RequestHandler$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/emailserver/core/RequestHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/emailserver/core/RequestHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/emailserver/core/UsersList.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/emailserver/core/ServerCoreThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/emailserver/core/ServerCoreThread.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/emailserver/io/FilesManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/emailserver/io/FilesManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/emailserver/network/Request.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/emailserver/network/Request.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/emailserver/network/RequestType.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/emailserver/network/RequestType.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/emailserver/network/Response.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/emailserver/network/Response.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/emailserver/network/ResponseType.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/emailserver/network/ResponseType.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/emailserver/test/ClientTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/emailserver/test/ClientTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/0/received/1574173757781.ser" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/0/received/1574173942385.ser" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/0/sent/1574173757781.ser" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/0/sent/1574173942385.ser" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/emailserver/test/ClientTest.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/emailserver/ApplicationStarter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/emailserver/ApplicationStarter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/emailserver/beans/Email.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/emailserver/beans/Email.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/emailserver/beans/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/emailserver/beans/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/emailserver/core/RequestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/emailserver/core/RequestHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/emailserver/core/UsersList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/emailserver/core/UsersTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/emailserver/core/ServerCoreThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/emailserver/core/ServerCoreThread.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/emailserver/io/FilesManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/emailserver/io/FilesManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/emailserver/network/Request.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/emailserver/network/Request.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/emailserver/network/RequestType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/emailserver/network/RequestType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/emailserver/network/Response.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/emailserver/network/Response.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/emailserver/network/ResponseType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/emailserver/network/ResponseType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/emailserver/test/ClientTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/emailserver/test/ClientTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/emailserver/test/ClientTest.java" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -53,7 +47,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
+        <option value="FxmlFile" />
         <option value="Class" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -71,9 +67,12 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/emailserver" />
+      <recent name="$PROJECT_DIR$/src/main/resources" />
       <recent name="$PROJECT_DIR$/data" />
     </key>
   </component>
@@ -89,13 +88,13 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.ClientTest">
+  <component name="RunManager" selected="Application.ApplicationStarter">
     <configuration name="ApplicationStarter" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.emailserver.ApplicationStarter" />
       <module name="com.emailserver.main" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.emailserver.*" />
+          <option name="PATTERN" value="com.emailserver.ui.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -104,11 +103,11 @@
       </method>
     </configuration>
     <configuration name="ClientTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.emailserver.test.ClientTest" />
+      <option name="MAIN_CLASS_NAME" value="com.emailserver.prove.ClientTest" />
       <module name="com.emailserver.main" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.emailserver.test.*" />
+          <option name="PATTERN" value="com.emailserver.prove.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -129,8 +128,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="MainApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.emailserver.ui.MainApplication" />
+      <module name="com.emailserver.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.emailserver.ui.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.MainApplication" />
         <item itemvalue="Application.ClientTest" />
         <item itemvalue="Application.ApplicationStarter" />
       </list>
@@ -150,7 +163,7 @@
       <workItem from="1573729767690" duration="16349000" />
       <workItem from="1573835112823" duration="8000" />
       <workItem from="1573842193336" duration="19080000" />
-      <workItem from="1574109591073" duration="26411000" />
+      <workItem from="1574109591073" duration="49586000" />
     </task>
     <servers />
   </component>

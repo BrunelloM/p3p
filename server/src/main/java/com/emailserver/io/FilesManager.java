@@ -135,6 +135,13 @@ public class FilesManager {
         );
     }
 
+    public static synchronized boolean trashSentEmail(User user, Email email) {
+        return moveFile(
+            String.format(PARAM_PATH, user.getId(), SENT_FOLDER, email.getId()),
+            String.format(PARAM_PATH, user.getId(), TRASH_FOLDER, email.getId())
+        );
+    }
+
     public static synchronized boolean trashSpecialEmail(User user, Email email) {
         return moveFile(
             String.format(PARAM_PATH, user.getId(), SPECIAL_FOLDER, email.getId()),
