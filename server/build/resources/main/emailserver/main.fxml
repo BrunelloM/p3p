@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
@@ -12,6 +13,14 @@
    <top>
       <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="853.0" styleClass="h-box" BorderPane.alignment="CENTER">
          <children>
+            <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/mail_icon.png" />
+               </image>
+               <HBox.margin>
+                  <Insets left="12.0" />
+               </HBox.margin>
+            </ImageView>
             <Label maxHeight="1.7976931348623157E308" text="Email server control panel" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="20.0" />
