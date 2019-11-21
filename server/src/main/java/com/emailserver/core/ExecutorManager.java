@@ -5,7 +5,7 @@ import java.util.concurrent.Executors;
 
 public class ExecutorManager {
     // Max threads that can be executed into Executor thread pool
-    private static final int MAX_THREADS = 4;
+    private static final int MAX_THREADS = 18;
     // Thread pool in which futures will be stored
     private static ExecutorService executorService;
 

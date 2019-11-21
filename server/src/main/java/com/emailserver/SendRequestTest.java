@@ -4,24 +4,22 @@ import com.emailserver.beans.Email;
 import com.emailserver.network.Request;
 import com.emailserver.network.RequestType;
 import com.emailserver.network.Response;
-
 import java.io.IOException;
 import java.io.ObjectInputStream;
-import java.io.ObjectOutput;
 import java.io.ObjectOutputStream;
 import java.net.InetAddress;
 import java.net.Socket;
-import java.net.UnknownHostException;
 
 public class SendRequestTest {
 
     public static void main(String[] args) throws IOException, ClassNotFoundException {
         Socket connection = new Socket(InetAddress.getLocalHost().getHostName(), 1055);
-        ObjectInputStream oiStream = new ObjectInputStream(connection.getInputStream());
         ObjectOutputStream ooStream = new ObjectOutputStream(connection.getOutputStream());
+        ObjectInputStream oiStream = new ObjectInputStream(connection.getInputStream());
+        Request req = provideRequest();
 
-        ooStream.writeObject(provideRequest());
-
+        ooStream.reset();
+        ooStream.writeObject(req);
         Response response = (Response) oiStream.readObject();
         System.out.println(response.getType().toString());
     }

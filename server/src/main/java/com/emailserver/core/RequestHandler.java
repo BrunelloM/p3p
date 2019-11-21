@@ -29,8 +29,8 @@ public class RequestHandler implements Runnable {
         this.model = model;
         this.protocol = new Protocol(model);
         try {
-            this.inputStream = new ObjectInputStream(clientConnection.getInputStream());
             this.outputStream = new ObjectOutputStream(clientConnection.getOutputStream());
+            this.inputStream = new ObjectInputStream(clientConnection.getInputStream());
         } catch (IOException e) {
             e.printStackTrace();
         }
