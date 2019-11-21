@@ -56,7 +56,8 @@ public class ServerCoreThread extends Thread {
         try {
             while(!Thread.interrupted()) {
                 Socket incoming = socket.accept();
-                requestsPool.execute(new RequestHandler(incoming));
+                model.addMessage("New connection from " + incoming.getInetAddress() + " accepted");
+                requestsPool.execute(new RequestHandler(incoming, model));
             }
         } catch (IOException e) {
             if(!(e instanceof SocketException)) {
@@ -88,7 +89,7 @@ public class ServerCoreThread extends Thread {
     }
 
     private void coreThreadError(Exception e) {
-        model.addMessage("Fatal Error: " + e.getMessage());
+        model.addMessage(String.format(Messages.ERROR_MSG, e.getMessage()));
         hasErrors = true;
         this.interrupt();
     }

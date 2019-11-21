@@ -1,32 +1,34 @@
 package com.emailserver.core;
 
-import com.emailserver.beans.Email;
-import com.emailserver.beans.User;
-import com.emailserver.io.FilesManager;
+import com.emailserver.model.Messages;
+import com.emailserver.model.MessagesList;
 import com.emailserver.network.Protocol;
 import com.emailserver.network.Request;
 import com.emailserver.network.Response;
-
-import java.util.Iterator;
 import java.util.List;
-
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
-import java.util.Optional;
 
+
+/**
+ *
+ * @author Matteo Brunello
+ */
 public class RequestHandler implements Runnable {
 
     private Socket clientConnection;
     private ObjectInputStream inputStream;
     private ObjectOutputStream outputStream;
     private Protocol protocol;
+    private MessagesList model;
 
-    public RequestHandler(Socket clientConnection) {
+    RequestHandler(Socket clientConnection, MessagesList model ) {
+        this.clientConnection = clientConnection;
+        this.model = model;
+        this.protocol = new Protocol(model);
         try {
-            this.clientConnection = clientConnection;
-            this.protocol = new Protocol();
             this.inputStream = new ObjectInputStream(clientConnection.getInputStream());
             this.outputStream = new ObjectOutputStream(clientConnection.getOutputStream());
         } catch (IOException e) {

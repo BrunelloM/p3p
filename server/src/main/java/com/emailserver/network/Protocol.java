@@ -4,6 +4,8 @@ import com.emailserver.beans.Email;
 import com.emailserver.beans.User;
 import com.emailserver.core.UsersTable;
 import com.emailserver.io.FilesManager;
+import com.emailserver.model.Messages;
+import com.emailserver.model.MessagesList;
 
 import java.util.*;
 
@@ -11,6 +13,8 @@ import java.util.*;
  *  Protocol is a class that processes Requests from the client and always returns Responses.
  *  NOTE: This class SHOULD have an handler function for each RequestType
  *  TODO: Add check identity method
+ *
+ * @author Matteo Brunello
  */
 public class Protocol {
 
@@ -19,11 +23,19 @@ public class Protocol {
     private static final String ERR_MALFORMED_PARAM = "Unable to retrieve sender from email parameter: Malformed email";
     private static final String ERR_INTERNAL = "Unable to process the request: Internal error";
 
+    private MessagesList model;
+
+    public Protocol(MessagesList model) {
+        this.model = model;
+    }
+
     /**
-     * @param incoming
-     * @return
+     *
+     * @param incoming Incoming Request to be handled
+     * @return Response that will be sent over Socket connection
      */
     public Response handleDeleteRequest(Request incoming) {
+        model.addMessage(String.format(Messages.RECEIVED_REQUEST, incoming.getType().toString(), incoming.getIdentity()));
         Response response = new Response();
         Email toDelete = incoming.getEmailParam();
         Optional<User> user = UsersTable.get(toDelete.getSender());
@@ -47,38 +59,47 @@ public class Protocol {
 
                 default:
                     response.setErrorState(ERR_INTERNAL);
+                    model.addMessage(String.format(Messages.ERROR_MSG, ERR_INTERNAL));
             }
         } else {
             response.setErrorState(ERR_MALFORMED_PARAM);
+            model.addMessage(String.format(Messages.ERROR_MSG, ERR_MALFORMED_PARAM));
         }
         return response;
     }
 
     /**
-     * @param incoming
-     * @return
+     *
+     * @param incoming Incoming Request to be handled
+     * @return Response that will be sent over Socket connection
      */
     public Response handleSendRequest(Request incoming) {
+        model.addMessage(String.format(Messages.RECEIVED_REQUEST, incoming.getType().toString(), incoming.getIdentity()));
         Response response = new Response();
         if(checkIdentity(incoming.getIdentity())) {
             Email toSend = incoming.getEmailParam();
             if(checkRecipients(toSend)) {
                 FilesManager.saveEmail(toSend);
                 response.setCompletedState();;
+                model.addMessage(String.format(Messages.SERVED_REQUEST, incoming.getType(), incoming.getIdentity()));
             } else {
                 response.setErrorState(ERR_RECIPIENT_NOT_FOUND);
+                model.addMessage(String.format(Messages.ERROR_MSG, ERR_RECIPIENT_NOT_FOUND));
             }
         } else {
             response.setErrorState(ERR_IDENTITY_NOT_FOUND);
+            model.addMessage(String.format(Messages.ERROR_MSG, ERR_IDENTITY_NOT_FOUND));
         }
         return response;
     }
 
     /**
-     * @param incoming
-     * @return
+     *
+     * @param incoming Incoming Request to be handled
+     * @return Response that will be sent over Socket connection
      */
     public List<Response> handleGetRequest(Request incoming) {
+        model.addMessage(String.format(Messages.RECEIVED_REQUEST, incoming.getType().toString(), incoming.getIdentity()));
         Response lastResponse = new Response();
         Optional<User> user = UsersTable.get(incoming.getIdentity());           // Check if the identity is right
         List<Response> responseList = new ArrayList<>();
@@ -115,8 +136,10 @@ public class Protocol {
             }
             lastResponse.setCompletedState();
             responseList.add(lastResponse);
+            model.addMessage(String.format(Messages.SERVED_REQUEST, incoming.getType(), incoming.getIdentity()));
             return responseList;
         } else {
+            model.addMessage(String.format(Messages.ERROR_MSG, ERR_IDENTITY_NOT_FOUND));
             lastResponse.setErrorState(ERR_IDENTITY_NOT_FOUND);
             return Collections.singletonList(lastResponse);
         }
@@ -137,6 +160,11 @@ public class Protocol {
         return isValid;
     }
 
+    /**
+     * Check if a given user is present in the users table
+     * @param emailAddress The email address of the identity to check
+     * @return True if identity is valid, false otherwise
+     */
     private boolean checkIdentity(String emailAddress) {
         return UsersTable.get(emailAddress).isPresent();
     }

@@ -34,4 +34,5 @@ public class Request implements Serializable {
     public Email getEmailParam() {
         return emailParam;
     }
+
 }
