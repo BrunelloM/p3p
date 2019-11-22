@@ -1,9 +1,25 @@
-.list-view .list-cell:even {
-    -fx-background-color: white;
+.list-view,
+.list-view:focused {
+    -fx-background-color:  #36393f, #36393f;
+    -fx-background-insets: 0, 1;
+    -fx-padding: 1;
 }
 
-.list-view .list-cell:odd {
-    -fx-background-color: white;
+.list-view .list-cell:odd,
+.list-view .list-cell:even {
+    -fx-background-color: #36393f;
+}
+
+.primary-color {
+    -fx-background-color: #36393f;
+}
+
+.primary-color-dark {
+    -fx-background-color: #2f3136;
+}
+
+.accent-color {
+    -fx-background-color: #7289da;
 }
 
 .list-view .list-cell:selected {
@@ -35,20 +51,19 @@
 }
 
 .list-view .scroll-bar:vertical .thumb {
-    -fx-background-color: #d50000;
+    -fx-background-color: #2f3136;
 }
 
 .bottom-only-border {
     -fx-border-style: solid;
-    -fx-border-color: transparent transparent #030303 transparent;
-    -fx-border-width: 1;
+    -fx-border-color: transparent transparent #2f3136 transparent;
+    -fx-border-width: 0 0 1 0;
 }
 
 .no-border {
     -fx-border-width: 0;
     -fx-border-color: transparent;
 }
-
 
 /*
 ** Side buttons stylesheets. It handles background colors and icon colors too
@@ -61,7 +76,8 @@
 }
 
 .toggle-button:selected {
-    -fx-background-color: white;
+    -fx-background-insets: 10;
+    -fx-background-color: #36393f;
     -fx-text-fill: black;
 }
 
@@ -77,3 +93,4 @@
 /** Trash side button selected/unselected effect  **/
 .trash-btn .image-view { -fx-image: url(img/delete_icon.png) }
 .trash-btn:selected .image-view{-fx-image: url(img/delete_icon_black.png) }
+

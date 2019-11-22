@@ -15,7 +15,7 @@
    </fx:define>
 
    <left>
-      <VBox alignment="TOP_CENTER" blendMode="SRC_ATOP" maxHeight="1.7976931348623157E308" prefHeight="755.0" prefWidth="350.0" style="-fx-background-color: #263238;" BorderPane.alignment="CENTER">
+      <VBox alignment="TOP_CENTER" blendMode="SRC_ATOP" maxHeight="1.7976931348623157E308" prefHeight="755.0" prefWidth="350.0" styleClass="primary-color-dark" BorderPane.alignment="CENTER">
          <children>
             <ImageView fx:id="avatarImageHolder" fitHeight="128.0" fitWidth="128.0" pickOnBounds="true" preserveRatio="true">
                <VBox.margin>
@@ -41,7 +41,7 @@
                   <Insets bottom="30.0" />
                </VBox.margin>
             </Label>
-            <Button contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #d50000; -fx-background-radius: 50;" text="COMPOSE" textFill="WHITE">
+            <Button contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-radius: 50;" styleClass="accent-color" text="COMPOSE" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
@@ -59,7 +59,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Line endX="185.0" fill="WHITE" startX="-110.0" stroke="#3d5059" strokeWidth="2.0">
+            <Line endX="185.0" startX="-110.0" stroke="#3d5059" strokeWidth="2.0">
                <VBox.margin>
                   <Insets bottom="20.0" top="30.0" />
                </VBox.margin>
@@ -144,7 +144,7 @@
             <ListView fx:id="emailListView" prefHeight="200.0" prefWidth="200.0" styleClass="no-border" />
          </center>
          <top>
-            <HBox alignment="CENTER_LEFT" prefHeight="64.0" prefWidth="874.0" style="-fx-background-color: white;" styleClass="no-border" stylesheets="@styles.css" BorderPane.alignment="CENTER">
+            <HBox alignment="CENTER_LEFT" prefHeight="64.0" prefWidth="874.0" styleClass="bottom-only-border, primary-color" stylesheets="@styles.css" BorderPane.alignment="CENTER">
                <children>
                   <Label contentDisplay="CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="150.0" text="Inbox">
                      <font>
@@ -155,7 +155,7 @@
                      </HBox.margin>
                   </Label>
                   <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-                  <Button onAction="#replyButtonClick" contentDisplay="GRAPHIC_ONLY" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="46.0" prefWidth="46.0" style="-fx-background-color: #d50000; -fx-background-radius: 54;">
+                  <Button onAction="#replyButtonClick" contentDisplay="GRAPHIC_ONLY" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="46.0" prefWidth="46.0" style="-fx-background-radius: 54;" styleClass="accent-color">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -166,7 +166,7 @@
                            </image>
                         </ImageView>
                      </graphic></Button>
-                  <Button onAction="#deleteButtonClick" contentDisplay="GRAPHIC_ONLY" layoutX="190.0" layoutY="17.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="46.0" prefWidth="46.0" style="-fx-background-color: #d50000; -fx-background-radius: 54;">
+                  <Button onAction="#deleteButtonClick" contentDisplay="GRAPHIC_ONLY" layoutX="190.0" layoutY="17.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="46.0" prefWidth="46.0" style="-fx-background-radius: 54;" styleClass="accent-color">
                      <font>
                         <Font size="20.0" />
                      </font>
