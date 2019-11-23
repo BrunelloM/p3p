@@ -24,7 +24,7 @@
                   </Label>
                </children>
             </HBox>
-                  <Label fx:id="subjectLabel">
+                  <Label fx:id="subjectLabel" textFill="white">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>

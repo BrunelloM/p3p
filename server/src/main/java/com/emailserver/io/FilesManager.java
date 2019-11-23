@@ -1,7 +1,7 @@
 package com.emailserver.io;
 
-import com.emailserver.beans.Email;
-import com.emailserver.beans.User;
+import shared.Email;
+import shared.User;
 import com.emailserver.core.UsersTable;
 
 import java.io.*;
@@ -128,40 +128,61 @@ public class FilesManager {
         }
     }
 
-    public static synchronized boolean trashInboxEmail(User user, Email email) {
-        return moveFile(
-            String.format(PARAM_PATH, user.getId(), RECEIVED_FOLDER, email.getId()),
-            String.format(PARAM_PATH, user.getId(), TRASH_FOLDER, email.getId())
+    /**
+     * @param user
+     * @param email
+     */
+    public static synchronized void trashInboxEmail(User user, Email email) {
+        moveFile(
+                String.format(PARAM_PATH, user.getId(), RECEIVED_FOLDER, email.getId()),
+                String.format(PARAM_PATH, user.getId(), TRASH_FOLDER, email.getId())
         );
     }
 
-    public static synchronized boolean trashSentEmail(User user, Email email) {
-        return moveFile(
-            String.format(PARAM_PATH, user.getId(), SENT_FOLDER, email.getId()),
-            String.format(PARAM_PATH, user.getId(), TRASH_FOLDER, email.getId())
+    /**
+     * @param user
+     * @param email
+     */
+    public static synchronized void trashSentEmail(User user, Email email) {
+        moveFile(
+                String.format(PARAM_PATH, user.getId(), SENT_FOLDER, email.getId()),
+                String.format(PARAM_PATH, user.getId(), TRASH_FOLDER, email.getId())
         );
     }
 
-    public static synchronized boolean trashSpecialEmail(User user, Email email) {
-        return moveFile(
-            String.format(PARAM_PATH, user.getId(), SPECIAL_FOLDER, email.getId()),
-            String.format(PARAM_PATH, user.getId(), TRASH_FOLDER, email.getId())
+    /**
+     * @param user
+     * @param email
+     */
+    public static synchronized void trashSpecialEmail(User user, Email email) {
+        moveFile(
+                String.format(PARAM_PATH, user.getId(), SPECIAL_FOLDER, email.getId()),
+                String.format(PARAM_PATH, user.getId(), TRASH_FOLDER, email.getId())
+        );
+    }
+
+    /**
+     * @param user
+     * @param email
+     */
+    public static synchronized void starInboxEmail(User user, Email email) {
+        moveFile(
+                String.format(PARAM_PATH, user.getId(), RECEIVED_FOLDER, email.getId()),
+                String.format(PARAM_PATH, user.getId(), SPECIAL_FOLDER, email.getId())
         );
     }
 
     /**
      * @param path
      * @param newPath
-     * @return
      */
-    private static synchronized boolean moveFile(String path, String newPath) {
+    private static synchronized void moveFile(String path, String newPath) {
         Path temp = null;
         try {
             temp = Files.move(Paths.get(path), Paths.get(newPath));
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return temp != null;
     }
 
     /**

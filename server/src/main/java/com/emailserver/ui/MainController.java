@@ -1,6 +1,6 @@
 package com.emailserver.ui;
 
-import com.emailserver.core.ServerCoreThread;
+import com.emailserver.core.ServerDaemon;
 import com.emailserver.model.MessagesList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -19,7 +19,7 @@ public class MainController implements Initializable {
     @FXML
     private ListView<String> messagesList;
     private MessagesList model;                     // Model of the MVC pattern (Message List) )
-    private ServerCoreThread coreThread;            // Server core thread, it will handle every client requests
+    private ServerDaemon coreThread;            // Server core thread, it will handle every client requests
 
     MainController(MessagesList model) {
         this.model = model;
@@ -41,7 +41,7 @@ public class MainController implements Initializable {
     @FXML
     void onStartClick() {
         if(coreThread == null) {
-            coreThread = new ServerCoreThread(model);
+            coreThread = new ServerDaemon(model);
             if(coreThread.canStart())
                 coreThread.start();
         }

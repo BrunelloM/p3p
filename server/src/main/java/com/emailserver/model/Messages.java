@@ -11,4 +11,9 @@ public class Messages {
     public static final String SERVER_STOPPING = "Stopping server...";
     public static final String RECEIVED_REQUEST = "Received %s request from %s";
 
+    public static final String ERR_IDENTITY_NOT_FOUND = "Unable to retrieve the given user, Wrong identity";
+    public static final String ERR_RECIPIENT_NOT_FOUND = "Unable to retrieve some recipients, Wrong address";
+    public static final String ERR_MALFORMED_PARAM = "Unable to retrieve sender from email parameter, Malformed email";
+    public static final String ERR_INTERNAL = "Unable to process the request, Internal error";
+
 }

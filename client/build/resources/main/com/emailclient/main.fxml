@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.emailclient.ui.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
@@ -7,7 +8,6 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<?import com.emailclient.ui.SideBarButton?>
 <BorderPane maxHeight="-Infinity" maxWidth="0.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="755.0" prefWidth="1241.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.emailclient.controllers.MainController">
 
    <fx:define>
@@ -15,173 +15,183 @@
    </fx:define>
 
    <left>
-      <VBox alignment="TOP_CENTER" blendMode="SRC_ATOP" maxHeight="1.7976931348623157E308" prefHeight="755.0" prefWidth="350.0" styleClass="primary-color-dark" BorderPane.alignment="CENTER">
-         <children>
-            <ImageView fx:id="avatarImageHolder" fitHeight="128.0" fitWidth="128.0" pickOnBounds="true" preserveRatio="true">
-               <VBox.margin>
-                  <Insets bottom="30.0" top="30.0" />
-               </VBox.margin>
-               <image>
-                  <Image url="@img/avatar.png" />
-               </image>
-            </ImageView>
-            <Label text="BRUNELLO MATTEO" textFill="WHITE">
-               <font>
-                  <Font size="18.0" />
-               </font>
-               <VBox.margin>
-                  <Insets bottom="15.0" />
-               </VBox.margin>
-            </Label>
-            <Label text="brunello.mtt@gesu.com" textFill="WHITE">
-               <font>
-                  <Font size="18.0" />
-               </font>
-               <VBox.margin>
-                  <Insets bottom="30.0" />
-               </VBox.margin>
-            </Label>
-            <Button contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-radius: 50;" styleClass="accent-color" text="COMPOSE" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="20.0" />
-               </font>
-               <VBox.margin>
-                  <Insets left="30.0" right="30.0" />
-               </VBox.margin>
-               <padding>
-                  <Insets bottom="10.0" top="10.0" />
-               </padding>
-               <graphic>
-                  <ImageView fx:id="avatarImageHolder1" fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@img/edit_icon.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Line endX="185.0" startX="-110.0" stroke="#3d5059" strokeWidth="2.0">
-               <VBox.margin>
-                  <Insets bottom="20.0" top="30.0" />
-               </VBox.margin>
-            </Line>
-            <SideBarButton fx:id="inboxButton" alignment="TOP_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="inbox-btn" text="INBOX" textFill="WHITE" toggleGroup="$sideNav">
-               <font>
-                  <Font size="20.0" />
-               </font>
-               <padding>
-                  <Insets bottom="15.0" left="50.0" top="15.0" />
-               </padding>
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <graphic>
-                  <ImageView fitHeight="24.0" fitWidth="24.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" />
-               </graphic>
-            </SideBarButton>
-            <SideBarButton alignment="TOP_LEFT" maxWidth="1.7976931348623157E308" minWidth="300.0" mnemonicParsing="false" styleClass="sent-btn" text="SENT" textFill="WHITE" toggleGroup="$sideNav">
-               <font>
-                  <Font size="20.0" />
-               </font>
-               <padding>
-                  <Insets bottom="15.0" left="50.0" top="15.0" />
-               </padding>
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <graphic>
-                  <ImageView fitHeight="24.0" fitWidth="24.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" />
-               </graphic>
-            </SideBarButton>
-            <SideBarButton alignment="TOP_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="special-btn" stylesheets="@styles.css" text="SPECIAL" textFill="WHITE" toggleGroup="$sideNav">
-               <font>
-                  <Font size="20.0" />
-               </font>
-               <padding>
-                  <Insets bottom="15.0" left="50.0" top="15.0" />
-               </padding>
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <graphic>
-                  <ImageView fitHeight="24.0" fitWidth="24.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" />
-               </graphic>
-            </SideBarButton>
-            <SideBarButton alignment="TOP_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="trash-btn" text="TRASH" textFill="WHITE"  toggleGroup="$sideNav">
-               <font>
-                  <Font size="20.0" />
-               </font>
-               <padding>
-                  <Insets bottom="15.0" left="50.0" top="15.0" />
-               </padding>
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <graphic>
-                  <ImageView fitHeight="24.0" fitWidth="24.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" />
-               </graphic>
-            </SideBarButton>
-         </children>
+      <VBox alignment="TOP_CENTER" blendMode="SRC_ATOP" maxHeight="1.7976931348623157E308" prefHeight="755.0"
+            prefWidth="350.0" styleClass="primary-color-dark" BorderPane.alignment="CENTER">
          <BorderPane.margin>
-            <Insets />
+            <Insets/>
          </BorderPane.margin>
+         <ImageView fx:id="avatarImageHolder" fitHeight="128.0" fitWidth="128.0" pickOnBounds="true"
+                    preserveRatio="true">
+            <VBox.margin>
+               <Insets bottom="30.0" top="30.0"/>
+            </VBox.margin>
+            <Image url="@img/avatar.png"/>
+         </ImageView>
+         <Label text="BRUNELLO MATTEO" textFill="WHITE">
+            <font>
+               <Font size="18.0"/>
+            </font>
+            <VBox.margin>
+               <Insets bottom="15.0"/>
+            </VBox.margin>
+         </Label>
+         <Label text="brunello.mtt@gesu.com" textFill="WHITE">
+            <font>
+               <Font size="18.0"/>
+            </font>
+            <VBox.margin>
+               <Insets bottom="30.0"/>
+            </VBox.margin>
+         </Label>
+         <Button contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false"
+                 style="-fx-background-radius: 50;" styleClass="accent-color" text="COMPOSE" textFill="WHITE" onAction="#composeButtonClick">
+            <font>
+               <Font name="System Bold" size="20.0"/>
+            </font>
+            <VBox.margin>
+               <Insets left="30.0" right="30.0"/>
+            </VBox.margin>
+            <padding>
+               <Insets bottom="10.0" top="10.0"/>
+            </padding>
+            <graphic>
+               <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@img/edit_icon.png"/>
+               </ImageView>
+            </graphic>
+         </Button>
+         <Line endX="185.0" startX="-110.0" stroke="#36393f" strokeWidth="2.0">
+            <VBox.margin>
+               <Insets bottom="20.0" top="30.0"/>
+            </VBox.margin>
+         </Line>
+         <SideBarButton fx:id="inboxButton" alignment="TOP_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="inbox-btn" text="INBOX" textFill="WHITE" toggleGroup="$sideNav" onMouseClicked="#inboxButtonClick">
+            <font>
+               <Font size="20.0"/>
+            </font>
+            <padding>
+               <Insets bottom="15.0" left="50.0" top="15.0"/>
+            </padding>
+            <VBox.margin>
+               <Insets/>
+            </VBox.margin>
+            <opaqueInsets>
+               <Insets/>
+            </opaqueInsets>
+            <graphic>
+               <ImageView fitHeight="24.0" fitWidth="24.0" nodeOrientation="INHERIT" pickOnBounds="true"
+                          preserveRatio="true"/>
+            </graphic>
+         </SideBarButton>
+         <SideBarButton alignment="TOP_LEFT" maxWidth="1.7976931348623157E308" minWidth="300.0" mnemonicParsing="false" onMouseClicked="#sentButtonClick"
+                        styleClass="sent-btn" text="SENT" textFill="WHITE" toggleGroup="$sideNav">
+            <font>
+               <Font size="20.0"/>
+            </font>
+            <padding>
+               <Insets bottom="15.0" left="50.0" top="15.0"/>
+            </padding>
+            <VBox.margin>
+               <Insets/>
+            </VBox.margin>
+            <opaqueInsets>
+               <Insets/>
+            </opaqueInsets>
+            <graphic>
+               <ImageView fitHeight="24.0" fitWidth="24.0" nodeOrientation="INHERIT" pickOnBounds="true"
+                          preserveRatio="true"/>
+            </graphic>
+         </SideBarButton>
+         <SideBarButton alignment="TOP_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false"
+                        styleClass="special-btn" stylesheets="@styles.css" text="SPECIAL" textFill="WHITE"
+                        toggleGroup="$sideNav" onMouseClicked="#specialButtonClick">
+            <font>
+               <Font size="20.0"/>
+            </font>
+            <padding>
+               <Insets bottom="15.0" left="50.0" top="15.0"/>
+            </padding>
+            <VBox.margin>
+               <Insets/>
+            </VBox.margin>
+            <opaqueInsets>
+               <Insets/>
+            </opaqueInsets>
+            <graphic>
+               <ImageView fitHeight="24.0" fitWidth="24.0" nodeOrientation="INHERIT" pickOnBounds="true"
+                          preserveRatio="true"/>
+            </graphic>
+         </SideBarButton>
+         <SideBarButton alignment="TOP_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false"
+                        styleClass="trash-btn" text="TRASH" textFill="WHITE" toggleGroup="$sideNav" onMouseClicked="#trashButtonClick">
+            <font>
+               <Font size="20.0"/>
+            </font>
+            <padding>
+               <Insets bottom="15.0" left="50.0" top="15.0"/>
+            </padding>
+            <VBox.margin>
+               <Insets/>
+            </VBox.margin>
+            <opaqueInsets>
+               <Insets/>
+            </opaqueInsets>
+            <graphic>
+               <ImageView fitHeight="24.0" fitWidth="24.0" nodeOrientation="INHERIT" pickOnBounds="true"
+                          preserveRatio="true"/>
+            </graphic>
+         </SideBarButton>
       </VBox>
    </left>
    <center>
-      <BorderPane styleClass="no-border" BorderPane.alignment="CENTER">
+      <BorderPane fx:id="borderPane" styleClass="no-border" BorderPane.alignment="CENTER">
          <center>
-            <ListView fx:id="emailListView" prefHeight="200.0" prefWidth="200.0" styleClass="no-border" />
+            <ListView fx:id="emailListView" prefHeight="10.0" prefWidth="200.0" styleClass="no-border" xmlns:fx="http://javafx.com/fxml/1"/>
          </center>
          <top>
-            <HBox alignment="CENTER_LEFT" prefHeight="64.0" prefWidth="874.0" styleClass="bottom-only-border, primary-color" stylesheets="@styles.css" BorderPane.alignment="CENTER">
-               <children>
-                  <Label contentDisplay="CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="150.0" text="Inbox">
-                     <font>
-                        <Font name="System Bold" size="30.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets left="30.0" />
-                     </HBox.margin>
-                  </Label>
-                  <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-                  <Button onAction="#replyButtonClick" contentDisplay="GRAPHIC_ONLY" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="46.0" prefWidth="46.0" style="-fx-background-radius: 54;" styleClass="accent-color">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                     <graphic>
-                        <ImageView fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@img/reply_icon.png" />
-                           </image>
-                        </ImageView>
-                     </graphic></Button>
-                  <Button onAction="#deleteButtonClick" contentDisplay="GRAPHIC_ONLY" layoutX="190.0" layoutY="17.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="46.0" prefWidth="46.0" style="-fx-background-radius: 54;" styleClass="accent-color">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                     <graphic>
-                        <ImageView fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@img/remove_icon.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <HBox.margin>
-                        <Insets left="20.0" right="40.0" />
-                     </HBox.margin>
-                  </Button>
-               </children></HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="64.0" prefWidth="874.0" styleClass="bottom-only-border, primary-color">
+               <Label contentDisplay="CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="150.0" text="Inbox" textFill="WHITE">
+                  <font>
+                     <Font name="System Bold" size="30.0"/>
+                  </font>
+                  <HBox.margin>
+                     <Insets left="30.0"/>
+                  </HBox.margin>
+               </Label>
+               <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS"/>
+               <Button contentDisplay="GRAPHIC_ONLY" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+                       minWidth="-Infinity" mnemonicParsing="false" onAction="#replyButtonClick" prefHeight="46.0"
+                       prefWidth="46.0" style="-fx-background-radius: 54;" styleClass="accent-color">
+                  <font>
+                     <Font size="20.0"/>
+                  </font>
+                  <graphic>
+                     <ImageView fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                           <Image url="@img/reply_icon.png"/>
+                        </image>
+                     </ImageView>
+                  </graphic>
+               </Button>
+               <Button contentDisplay="GRAPHIC_ONLY" layoutX="190.0" layoutY="17.0" maxHeight="-Infinity"
+                       maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false"
+                       onAction="#deleteButtonClick" prefHeight="46.0" prefWidth="46.0"
+                       style="-fx-background-radius: 54;" styleClass="accent-color">
+                  <font>
+                     <Font size="20.0"/>
+                  </font>
+                  <graphic>
+                     <ImageView fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                           <Image url="@img/remove_icon.png"/>
+                        </image>
+                     </ImageView>
+                  </graphic>
+                  <HBox.margin>
+                     <Insets left="20.0" right="40.0"/>
+                  </HBox.margin>
+               </Button>
+            </HBox>
          </top>
       </BorderPane>
    </center>

@@ -5,6 +5,7 @@
     -fx-padding: 1;
 }
 
+
 .list-view .list-cell:odd,
 .list-view .list-cell:even {
     -fx-background-color: #36393f;
@@ -16,6 +17,30 @@
 
 .primary-color-dark {
     -fx-background-color: #2f3136;
+}
+
+.text-area,
+.text-field {
+    -fx-border-width: 1;
+    -fx-border-radius: 5;
+    -fx-font-size: 18;
+    -fx-border-color: #2f3136;
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+}
+
+
+.text-area .scroll-pane {
+    -fx-background-color: transparent;
+}
+
+.text-area .scroll-pane .viewport{
+    -fx-background-color: transparent;
+}
+
+
+.text-area .scroll-pane .content{
+    -fx-background-color: transparent;
 }
 
 .accent-color {
@@ -76,21 +101,19 @@
 }
 
 .toggle-button:selected {
-    -fx-background-insets: 10;
     -fx-background-color: #36393f;
-    -fx-text-fill: black;
 }
 
 /** Inbox side button selected/unselected effect  **/
 .inbox-btn .image-view { -fx-image: url(img/mail_icon.png) }
-.inbox-btn:selected .image-view{-fx-image: url(img/mail_icon_black.png) }
+/**.inbox-btn:selected .image-view{-fx-image: url(img/mail_icon_black.png) }
 /** Send side button selected/unselected effect  **/
 .sent-btn .image-view { -fx-image: url(img/send_icon.png) }
-.sent-btn:selected .image-view{-fx-image: url(img/send_icon_black.png) }
+/**.sent-btn:selected .image-view{-fx-image: url(img/send_icon_black.png) }
 /** Special side button selected/unselected effect  **/
 .special-btn .image-view { -fx-image: url(img/star_icon.png) }
-.special-btn:selected .image-view{-fx-image: url(img/star_icon_black.png) }
+/**.special-btn:selected .image-view{-fx-image: url(img/star_icon_black.png) }
 /** Trash side button selected/unselected effect  **/
 .trash-btn .image-view { -fx-image: url(img/delete_icon.png) }
-.trash-btn:selected .image-view{-fx-image: url(img/delete_icon_black.png) }
+/**.trash-btn:selected .image-view{-fx-image: url(img/delete_icon_black.png) }
 

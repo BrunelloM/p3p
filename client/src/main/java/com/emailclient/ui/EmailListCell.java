@@ -1,6 +1,5 @@
 package com.emailclient.ui;
 
-import com.emailclient.beans.Email;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ContentDisplay;
@@ -8,10 +7,15 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.util.Callback;
+import shared.Email;
+
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 
 public class EmailListCell extends ListCell<Email> {
+
+    private final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("EEEEE, HH:mm");
 
     @FXML private Label nameLabel;
     @FXML private Label dateLabel;
@@ -43,15 +47,13 @@ public class EmailListCell extends ListCell<Email> {
             setContentDisplay(ContentDisplay.TEXT_ONLY);
         }
         else {
-            nameLabel.setText(item.getName());
+            nameLabel.setText(item.getSender());
             subjectLabel.setText(item.getSubject());
-            descriptionLabel.setText(item.getContent());
-            dateLabel.setText(item.getDate());
-
+            descriptionLabel.setText(item.getText());
+            dateLabel.setText(simpleDateFormat.format(item.getDateSent()));
             setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
         }
     }
-
 
     public static class EmailListCellFactory implements Callback<ListView<Email>, ListCell<Email>> {
         @Override

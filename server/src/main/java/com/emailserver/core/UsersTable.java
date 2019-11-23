@@ -1,6 +1,6 @@
 package com.emailserver.core;
 
-import com.emailserver.beans.User;
+import shared.User;
 import com.emailserver.io.FilesManager;
 import java.util.LinkedHashMap;
 import java.util.Optional;

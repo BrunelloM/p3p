@@ -1,9 +1,10 @@
 package com.emailserver;
 
-import com.emailserver.beans.Email;
-import com.emailserver.network.Request;
-import com.emailserver.network.RequestType;
-import com.emailserver.network.Response;
+import shared.Email;
+import shared.Request;
+import shared.RequestType;
+import shared.Response;
+
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;

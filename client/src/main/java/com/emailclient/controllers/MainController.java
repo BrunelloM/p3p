@@ -1,15 +1,19 @@
 package com.emailclient.controllers;
 
-import com.emailclient.beans.Email;
+import com.emailclient.model.MainModel;
 import com.emailclient.ui.EmailListCell;
 import com.emailclient.ui.SideBarButton;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import shared.Email;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import java.io.IOException;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.control.ListView;
-import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.shape.Circle;
 
 import java.net.URL;
@@ -17,12 +21,11 @@ import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
 
+    @FXML private BorderPane borderPane;
     @FXML private ImageView avatarImageHolder;
     @FXML private ListView<Email> emailListView;
-    @FXML private ToggleGroup sideNavButtons;
     @FXML private SideBarButton inboxButton;
-
-    private ObservableList<Email> data;
+    private MainModel model;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -32,32 +35,59 @@ public class MainController implements Initializable {
         circle.setCenterY(64);
         avatarImageHolder.setClip(circle);
 
+        model = new MainModel();
+
         // Email list view init
         emailListView.setCellFactory(new EmailListCell.EmailListCellFactory());
-        data = FXCollections.observableArrayList(
-                new Email("Gesu' di Nazareth", "Consegna croce", "12:32 A.M.","Mauris ullamcorper vel augue et imperdiet. Phasellus et dolor ligula. Aenean semper scelerisque auctor. Nam iaculis tellus elit, at congue mauris venenatis quis. Nam eleifend eros a tempus pellentesque. Vestibulum ligula dui, suscipit id eleifend at, pellentesque eu magna. Maecenas vehicula sagittis augue a tristique. Nam eleifend sapien bibendum lacus tristique accumsan. Vestibulum aliquam rhoncus dui, at faucibus libero sollicitudin et."),
-                new Email("Edoardo Chiavazza", "Richiesta codifica", "2:01 A.M.","Mauris ullamcorper vel augue et imperdiet. Phasellus et dolor ligula. Aenean semper scelerisque auctor. Nam iaculis tellus elit, at congue mauris venenatis quis. Nam eleifend eros a tempus pellentesque. Vestibulum ligula dui, suscipit id eleifend at, pellentesque eu magna. Maecenas vehicula sagittis augue a tristique. Nam eleifend sapien bibendum lacus tristique accumsan. Vestibulum aliquam rhoncus dui, at faucibus libero sollicitudin et."),
-                new Email("Nome e cognome", "Consectetur adipiscing elit", "18:30 P.M","Mauris ullamcorper vel augue et imperdiet. Phasellus et dolor ligula. Aenean semper scelerisque auctor. Nam iaculis tellus elit, at congue mauris venenatis quis. Nam eleifend eros a tempus pellentesque. Vestibulum ligula dui, suscipit id eleifend at, pellentesque eu magna. Maecenas vehicula sagittis augue a tristique. Nam eleifend sapien bibendum lacus tristique accumsan. Vestibulum aliquam rhoncus dui, at faucibus libero sollicitudin et."),
-                new Email("Lorem ipsum dolor", "Consectetur adipiscing elit", "Yesterday","Mauris ullamcorper vel augue et imperdiet. Phasellus et dolor ligula. Aenean semper scelerisque auctor. Nam iaculis tellus elit, at congue mauris venenatis quis. Nam eleifend eros a tempus pellentesque. Vestibulum ligula dui, suscipit id eleifend at, pellentesque eu magna. Maecenas vehicula sagittis augue a tristique. Nam eleifend sapien bibendum lacus tristique accumsan. Vestibulum aliquam rhoncus dui, at faucibus libero sollicitudin et."),
-                new Email("Lorem ipsum dolor", "Consectetur adipiscing elit", "12:32 A.M.","Mauris ullamcorper vel augue et imperdiet. Phasellus et dolor ligula. Aenean semper scelerisque auctor. Nam iaculis tellus elit, at congue mauris venenatis quis. Nam eleifend eros a tempus pellentesque. Vestibulum ligula dui, suscipit id eleifend at, pellentesque eu magna. Maecenas vehicula sagittis augue a tristique. Nam eleifend sapien bibendum lacus tristique accumsan. Vestibulum aliquam rhoncus dui, at faucibus libero sollicitudin et."),
-                new Email("Edoardo Chiavazza", "Consectetur adipiscing elit", "12:32 A.M.","Mauris ullamcorper vel augue et imperdiet. Phasellus et dolor ligula. Aenean semper scelerisque auctor. Nam iaculis tellus elit, at congue mauris venenatis quis. Nam eleifend eros a tempus pellentesque. Vestibulum ligula dui, suscipit id eleifend at, pellentesque eu magna. Maecenas vehicula sagittis augue a tristique. Nam eleifend sapien bibendum lacus tristique accumsan. Vestibulum aliquam rhoncus dui, at faucibus libero sollicitudin et."),
-                new Email("Nome e cognome", "Consectetur adipiscing elit", "12:32 A.M.","Mauris ullamcorper vel augue et imperdiet. Phasellus et dolor ligula. Aenean semper scelerisque auctor. Nam iaculis tellus elit, at congue mauris venenatis quis. Nam eleifend eros a tempus pellentesque. Vestibulum ligula dui, suscipit id eleifend at, pellentesque eu magna. Maecenas vehicula sagittis augue a tristique. Nam eleifend sapien bibendum lacus tristique accumsan. Vestibulum aliquam rhoncus dui, at faucibus libero sollicitudin et."),
-                new Email("Lorem ipsum dolor", "Consectetur adipiscing elit", "12:32 A.M.","Mauris ullamcorper vel augue et imperdiet. Phasellus et dolor ligula. Aenean semper scelerisque auctor. Nam iaculis tellus elit, at congue mauris venenatis quis. Nam eleifend eros a tempus pellentesque. Vestibulum ligula dui, suscipit id eleifend at, pellentesque eu magna. Maecenas vehicula sagittis augue a tristique. Nam eleifend sapien bibendum lacus tristique accumsan. Vestibulum aliquam rhoncus dui, at faucibus libero sollicitudin et."),
-                new Email("Lorem ipsum dolor", "Consectetur adipiscing elit","12:32 A.M.", "Mauris ullamcorper vel augue et imperdiet. Phasellus et dolor ligula. Aenean semper scelerisque auctor. Nam iaculis tellus elit, at congue mauris venenatis quis. Nam eleifend eros a tempus pellentesque. Vestibulum ligula dui, suscipit id eleifend at, pellentesque eu magna. Maecenas vehicula sagittis augue a tristique. Nam eleifend sapien bibendum lacus tristique accumsan. Vestibulum aliquam rhoncus dui, at faucibus libero sollicitudin et.")
-        );
 
-        emailListView.setItems(data);
+        // Default selected side nav button
+        model.bindInboxModel(emailListView);
+        model.refreshInbox();
         inboxButton.setSelected(true);
     }
 
     @FXML
     private void deleteButtonClick() {
-        data.remove(emailListView.getSelectionModel().getSelectedItem());
+        Email selected = emailListView.getSelectionModel().getSelectedItem();
+        emailListView.getItems().remove(selected);
     }
 
     @FXML
-    private void replyButtonClick() {
-        // TODO: Compete this method
+    private void replyButtonClick(ActionEvent event) {
+
+    }
+
+    @FXML
+    private void replyAllButtonClick() {
+
+    }
+
+    @FXML
+    private void composeButtonClick(ActionEvent event) throws IOException {
+        Parent root = null;
+        root = FXMLLoader.load(getClass().getResource("../compose_email.fxml"));
+        ((Node) event.getSource()).getScene().setRoot(root);
+    }
+
+    /** +========+ SIDE NAVIGATION BAR BUTTONS HANDLERS +========+ **/
+    @FXML
+    private void inboxButtonClick() {
+        model.bindInboxModel(emailListView);
+    }
+
+    @FXML
+    private void sentButtonClick() {
+        model.bindSentModel(emailListView);
+    }
+
+    @FXML
+    private void specialButtonClick() {
+        model.bindSpecialModel(emailListView);
+    }
+
+    @FXML
+    private void trashButtonClick() {
+        model.bindTrashModel(emailListView);
     }
 
 }
