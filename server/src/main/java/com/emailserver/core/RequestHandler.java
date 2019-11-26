@@ -30,10 +30,10 @@ class RequestHandler {
      * @return Response that will be sent over Socket connection
      */
     Response handleDeleteRequest(Request incoming) {
-        model.addMessage(String.format(Messages.RECEIVED_REQUEST, incoming.getType().toString(), incoming.getIdentity()));
+        model.addMessage(String.format(Messages.RECEIVED_REQUEST, incoming.getType(), incoming.getIdentity()));
         Response response = new Response();
         Email toDelete = incoming.getEmailParam();
-        Optional<User> user = UsersTable.get(toDelete.getSender());
+        Optional<User> user = UsersTable.get(incoming.getIdentity());
         if(user.isPresent()) {
 
             switch(incoming.getType()) {

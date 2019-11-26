@@ -1,16 +1,15 @@
 package com.emailclient.model;
 
 import com.emailclient.utils.ApplicationContext;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.ListView;
 import shared.Email;
 import shared.Request;
+import java.util.List;
 import shared.RequestType;
-
-import java.util.Date;
 import java.util.Objects;
-
 
 public class MainModel {
 
@@ -20,7 +19,10 @@ public class MainModel {
     private ObservableList<Email> trashModel;
 
     public MainModel() {
-        init();
+        inboxModel = FXCollections.observableArrayList();
+        sentModel = FXCollections.observableArrayList();
+        specialModel = FXCollections.observableArrayList();
+        trashModel = FXCollections.observableArrayList();
     }
 
     public void bindSentModel(ListView<Email> listView) {
@@ -56,50 +58,98 @@ public class MainModel {
     }
 
     public void init() {
-        inboxModel = FXCollections.observableArrayList(new Email(0, "Inbox", new String[]{"Hi!"}, new Date(), "We are in inbox", "Inboxed email!"));
-        sentModel = FXCollections.observableArrayList(new Email(0, "Sent", new String[]{"Hi!"}, new Date(), "We are in sent", "Sent email!"));
-        specialModel = FXCollections.observableArrayList(new Email(0, "Special", new String[]{"Hi!"}, new Date(), "We are in special", "Special email!"));
-        trashModel = FXCollections.observableArrayList(new Email(0, "Trash", new String[]{"Hi!"}, new Date(), "We are in trash", "Trashed email!"));
+        // inboxModel = FXCollections.observableArrayList(new Email(0, "Inbox", new String[]{"Hi!"}, new Date(), "We are in inbox", "Inboxed email!"));
+        // sentModel = FXCollections.observableArrayList(new Email(0, "Sent", new String[]{"Hi!"}, new Date(), "We are in sent", "Sent email!"));
+        // specialModel = FXCollections.observableArrayList(new Email(0, "Special", new String[]{"Hi!"}, new Date(), "We are in special", "Special email!"));
+        // trashModel = FXCollections.observableArrayList(new Email(0, "Trash", new String[]{"Hi!"}, new Date(), "We are in trash", "Trashed email!"));
     }
 
 
-    public void refreshInbox() {
+    private void refreshInbox() {
         Request request = new Request(ApplicationContext.getIdentity().getAddress(), RequestType.INBOX, null);
         RequestThread requestThread = new RequestThread(request, this);
         requestThread.start();
     }
 
-    public void refreshSent() {
+    private void refreshSent() {
         Request request = new Request(ApplicationContext.getIdentity().getAddress(), RequestType.SENT, null);
         RequestThread requestThread = new RequestThread(request, this);
         requestThread.start();
     }
 
-    public void refreshTrash() {
+    private void refreshTrash() {
         Request request = new Request(ApplicationContext.getIdentity().getAddress(), RequestType.TRASH, null);
         RequestThread requestThread = new RequestThread(request, this);
         requestThread.start();
     }
 
-    public void refreshSpecials() {
+    private void refreshSpecials() {
         Request request = new Request(ApplicationContext.getIdentity().getAddress(), RequestType.SPECIALS, null);
         RequestThread requestThread = new RequestThread(request, this);
         requestThread.start();
     }
 
-    public ObservableList<Email> getInboxModel() {
-        return inboxModel;
+    void addInbox(Email toAdd) {
+        Platform.runLater(() -> inboxModel.add(toAdd));
     }
 
-    public ObservableList<Email> getSentModel() {
-        return sentModel;
+    void addAllInbox(List<Email> toAdd) {
+        Platform.runLater(() -> {
+            inboxModel.clear();
+            inboxModel.addAll(toAdd);
+        });
     }
 
-    public ObservableList<Email> getSpecialModel() {
-        return specialModel;
+    void addAllSent(List<Email> toAdd) {
+        Platform.runLater(() -> {
+            sentModel.clear();
+            sentModel.addAll(toAdd);
+        });
     }
 
-    public ObservableList<Email> getTrashModel() {
-        return trashModel;
+    void addAllSpecials(List<Email> toAdd) {
+        Platform.runLater(() -> {
+            specialModel.clear();
+            specialModel.addAll(toAdd);
+        });
     }
+
+    void addAllTrash(List<Email> toAdd) {
+        Platform.runLater(() -> {
+            trashModel.clear();
+            trashModel.addAll(toAdd);
+        });
+    }
+
+    void addSent(Email toAdd) {
+        Platform.runLater(() -> sentModel.add(toAdd));
+    }
+
+    void addTrash(Email toAdd) {
+        Platform.runLater(() -> trashModel.add(toAdd));
+    }
+
+    void addSpecial(Email toAdd) {
+        Platform.runLater(() -> specialModel.add(toAdd));
+    }
+
+    public void deleteInbox(Email email) {
+        Request request = new Request(ApplicationContext.getIdentity().getAddress(), RequestType.DEL_INBOX, email);
+        RequestThread requestThread = new RequestThread(request, this);
+        requestThread.start();
+    }
+
+    public void deleteSpecial(Email email) {
+        Request request = new Request(ApplicationContext.getIdentity().getAddress(), RequestType.DEL_SPECIAL, email);
+        RequestThread requestThread = new RequestThread(request, this);
+        requestThread.start();
+    }
+
+    public void deleteSent(Email email) {
+        Request request = new Request(ApplicationContext.getIdentity().getAddress(), RequestType.DEL_SENT, email);
+        RequestThread requestThread = new RequestThread(request, this);
+        requestThread.start();
+    }
+
+
 }

@@ -1,16 +1,16 @@
 package com.emailclient.model;
 
 import com.emailclient.utils.ApplicationContext;
+import java.util.List;
+import shared.Email;
 import shared.Request;
 import shared.Response;
 import shared.ResponseType;
-
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.net.InetAddress;
 import java.net.Socket;
-import java.net.UnknownHostException;
+import java.util.LinkedList;
 
 public class RequestThread extends Thread {
 
@@ -41,39 +41,53 @@ public class RequestThread extends Thread {
         try {
             ooStream.writeObject(request);
             Response response;
+            List<Email> emailList = new LinkedList<>(); // TODO: To remove
             switch(request.getType()) {
-                // TODO: THIS PIECE OF CODE NEEDS A REFACTOR
+                // TODO: This piece of code needs a giant refactor (But it works anyway :P)
                 case INBOX:
                     response = (Response) oiStream.readObject();
                     while(response.getType() == ResponseType.NEXT) {
-                        model.getInboxModel().add(response.getPayload());
+                        emailList.add(response.getPayload());
                         response = (Response) oiStream.readObject();
                     }
+                    model.addAllInbox(emailList);
                 break;
 
                 case SENT:
                     response = (Response) oiStream.readObject();
                     while(response.getType() == ResponseType.NEXT) {
-                        model.getSentModel().add(response.getPayload());
+                        emailList.add(response.getPayload());
                         response = (Response) oiStream.readObject();
                     }
+                    model.addAllSent(emailList);
                 break;
 
                 case SPECIALS:
                     response = (Response) oiStream.readObject();
                     while(response.getType() == ResponseType.NEXT) {
-                        model.getSpecialModel().add(response.getPayload());
+                        emailList.add(response.getPayload());
                         response = (Response) oiStream.readObject();
                     }
+                    model.addAllSpecials(emailList);
                 break;
 
                 case TRASH:
                     response = (Response) oiStream.readObject();
                     while(response.getType() == ResponseType.NEXT) {
-                        model.getTrashModel().add(response.getPayload());
+                        emailList.add(response.getPayload());
                         response = (Response) oiStream.readObject();
                     }
+                    model.addAllTrash(emailList);
                 break;
+
+                case DEL_SENT:
+                case DEL_SPECIAL:
+                case DEL_INBOX:
+                    response = (Response) oiStream.readObject();
+                    if(response.getType() == ResponseType.ERROR)
+                        throw new IOException(response.getMessage());
+                    break;
+
             }
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
