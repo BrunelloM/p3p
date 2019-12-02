@@ -1,4 +1,0 @@
-0; Matteo; Brunello; matteo.brunello@gmail.com
-1; Piermenti; Sfracellozzi; piermenti.sfracellozzi@mail.com
-2; Ugo; Sbrinzi; ugo_sbrinzi@sbrinzer.com
-3; Ciao; come; stai
