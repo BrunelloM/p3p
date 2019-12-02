@@ -1,6 +1,7 @@
 package controllers;
 
 import io.ConfigReader;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextArea;
@@ -21,17 +22,6 @@ public class ComposeMailController extends BindableController implements Initial
         // TODO: Nothing to initialize?
     }
 
-    @FXML
-    private void onSendButtonClick() {
-        if(checkFields()) {
-            String[] recipients = recipientsTxt.getText().split(", ");
-            String subject = subjectTxt.getText();
-            String text = textTxt.getText();
-            Email email  = new Email(ConfigReader.getIdentity().getAddress(), recipients, subject, text);
-            model.send(email);
-        }
-    }
-
     private boolean checkFields() {
         //TODO: To finish
         return true;
@@ -47,5 +37,21 @@ public class ComposeMailController extends BindableController implements Initial
         builder.append(recipients[recipients.length - 1]); // Append the last mail address recipient
         recipientsTxt.setText(builder.toString());
         subjectTxt.setText("RE: " + email.getSubject());
+    }
+
+    @FXML
+    private void onBackButtonClick(ActionEvent actionEvent) {
+
+    }
+
+    @FXML
+    private void onSendButtonClick() {
+        if(checkFields()) {
+            String[] recipients = recipientsTxt.getText().split(", ");
+            String subject = subjectTxt.getText();
+            String text = textTxt.getText();
+            Email email  = new Email(ConfigReader.getIdentity().getAddress(), recipients, subject, text);
+            model.send(email);
+        }
     }
 }

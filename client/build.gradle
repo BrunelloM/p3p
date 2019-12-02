@@ -22,5 +22,5 @@ dependencies {
 }
 
 application {
-    mainClassName = "com.emailclient.ApplicationStarter"
+    mainClassName = "client.utils.ApplicationStarter"
 }
