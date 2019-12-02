@@ -1,0 +1,31 @@
+.root {
+    -fx-background-color:  #2c2f33;
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}
+
+.list-view,
+.list-view:focused {
+    -fx-background-color:  #36393f, #36393f;
+    -fx-background-insets: 0, 1;
+    -fx-padding: 1;
+}
+
+.list-view .list-cell:odd,
+.list-view .list-cell:even {
+    -fx-background-color: #36393f;
+}
+
+.list-view .list-cell {
+    -fx-text-fill: white;
+    -fx-font-size: 16 pt;
+}
+
+.h-box {
+    -fx-background-color: #2f3136;
+}
+
+.button {
+    -fx-background-color: #7289da;
+    -fx-text-fill: white;
+}

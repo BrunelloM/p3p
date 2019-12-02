@@ -1,0 +1,120 @@
+.list-view,
+.list-view:focused {
+    -fx-background-color:  #36393f, #36393f;
+    -fx-background-insets: 0, 1;
+    -fx-padding: 1;
+}
+
+
+.list-view .list-cell:odd,
+.list-view .list-cell:even {
+    -fx-background-color: #36393f;
+}
+
+.primary-color {
+    -fx-background-color: #36393f;
+}
+
+.primary-color-dark {
+    -fx-background-color: #2f3136;
+}
+
+.text-area,
+.text-field {
+    -fx-border-width: 1;
+    -fx-border-radius: 5;
+    -fx-font-size: 18;
+    -fx-border-color: #2f3136;
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+}
+
+
+.text-area .scroll-pane {
+    -fx-background-color: transparent;
+}
+
+.text-area .scroll-pane .viewport{
+    -fx-background-color: transparent;
+}
+
+
+.text-area .scroll-pane .content{
+    -fx-background-color: transparent;
+}
+
+.circle-button {
+    -fx-background-color: #7289da;
+    -fx-background-radius: 54;
+}
+
+.accent-color {
+    -fx-background-color: #7289da;
+}
+
+.list-view .list-cell:selected {
+    -fx-background-color: lightblue;
+}
+
+.list-view .scroll-pane {
+    -fx-background-color: transparent;
+}
+
+.list-view .scroll-bar .increment-button {
+    visibility: hidden;
+}
+
+.list-view .scroll-bar .decrement-button {
+    visibility: hidden;
+}
+
+.list-view .scroll-bar:vertical {
+    -fx-background-color: transparent;
+}
+
+.list-view .scroll-bar:vertical .track-background {
+    visibility: hidden;
+}
+
+.list-view .scroll-bar:vertical .track {
+    visibility: hidden;
+}
+
+.list-view .scroll-bar:vertical .thumb {
+    -fx-background-color: #2f3136;
+}
+
+.bottom-only-border {
+    -fx-border-style: solid;
+    -fx-border-color: transparent transparent #2f3136 transparent;
+    -fx-border-width: 0 0 1 0;
+}
+
+.no-border {
+    -fx-border-width: 0;
+    -fx-border-color: transparent;
+}
+
+/*
+** Side buttons stylesheets. It handles background colors
+*/
+.toggle-button:focused,
+.toggle-button {
+    -fx-text-fill: white;
+    -fx-background-color: transparent;
+    -fx-background-radius: 0;
+}
+
+.toggle-button:selected {
+    -fx-background-color: #36393f;
+}
+
+/** Inbox side button selected/unselected effect  **/
+.inbox-btn .image-view { -fx-image: url(img/mail_icon.png) }
+/** Send side button selected/unselected effect  **/
+.sent-btn .image-view { -fx-image: url(img/send_icon.png) }
+/** Special side button selected/unselected effect  **/
+.special-btn .image-view { -fx-image: url(img/star_icon.png) }
+/** Trash side button selected/unselected effect  **/
+.trash-btn .image-view { -fx-image: url(img/delete_icon.png) }
+
