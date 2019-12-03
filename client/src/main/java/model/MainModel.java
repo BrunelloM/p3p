@@ -3,6 +3,7 @@ package model;
 import java.util.List;
 
 import fx.AlertManager;
+import fx.MainApplication;
 import io.DataSource;
 import io.NetworkDataSource;
 import javafx.collections.transformation.FilteredList;
@@ -29,7 +30,7 @@ import java.util.function.Predicate;
 public class MainModel {
 
     private ScheduledExecutorService refresherScheduler = Executors.newScheduledThreadPool(1);
-    private static final int REFRESH_RATE_SECONDS = 15;
+    private static final int REFRESH_RATE_SECONDS = 5;
 
     private FilteredList<Email> emailList;
     private ObservableList<Email> dataset;
@@ -108,6 +109,8 @@ public class MainModel {
         DataSource.DataSourceCallback<Response> callback = response -> {
             if(response.getType() == Response.Type.ERROR) {
                 AlertManager.showError(response.getMessage());
+            } else {
+                MainApplication.switchToMain();
             }
         };
         dataSource.send(email, callback);

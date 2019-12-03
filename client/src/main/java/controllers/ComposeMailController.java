@@ -1,5 +1,6 @@
 package controllers;
 
+import fx.MainApplication;
 import io.ConfigReader;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -7,7 +8,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import shared.Email;
-
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -40,8 +40,8 @@ public class ComposeMailController extends BindableController implements Initial
     }
 
     @FXML
-    private void onBackButtonClick(ActionEvent actionEvent) {
-
+    private void onBackButtonClick() {
+        MainApplication.switchToMain();
     }
 
     @FXML

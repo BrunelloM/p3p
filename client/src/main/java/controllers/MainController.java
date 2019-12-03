@@ -1,17 +1,14 @@
 package controllers;
 
-import javafx.scene.Scene;
+import fx.MainApplication;
 import model.MainModel;
 import fx.EmailListCell;
 import javafx.scene.control.Label;
 import shared.Email;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import java.io.IOException;
-import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.control.ListView;
 import javafx.scene.image.ImageView;
 import javafx.scene.shape.Circle;
@@ -23,6 +20,7 @@ public class MainController extends BindableController implements Initializable 
 
     private static final String RES_COMPOSE_LAYOUT = "../compose_email.fxml";
 
+    private boolean isRunning = false;
     @FXML private Label topBarTitle;
     @FXML private ImageView avatarImageHolder;
     @FXML private ListView<Email> emailListView;
@@ -48,23 +46,12 @@ public class MainController extends BindableController implements Initializable 
     @FXML
     private void replyButtonClick(ActionEvent event) throws IOException {
         Email email = emailListView.getSelectionModel().getSelectedItem();
-        openComposeEmail(((Node) event.getSource()).getScene(), email);
+        MainApplication.switchToCompose(email);
     }
 
     @FXML
-    private void composeButtonClick(ActionEvent event) throws IOException {
-        openComposeEmail(((Node) event.getSource()).getScene(), null);
-    }
-
-    private void openComposeEmail(Scene scene, Email email) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(RES_COMPOSE_LAYOUT));
-        Parent root = loader.load();
-        ComposeMailController controller = loader.getController();
-        controller.bindModel(model);
-        if(email != null) {
-            controller.replyState(email);
-        }
-        scene.setRoot(root);
+    private void composeButtonClick(ActionEvent event) {
+        MainApplication.switchToCompose();
     }
 
     @FXML
@@ -102,7 +89,6 @@ public class MainController extends BindableController implements Initializable 
         super.bindModel(model);
         model.bind(emailListView);              // Bind the ListView widget to the model
     }
-
 
 }
 
