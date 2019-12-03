@@ -1,6 +1,9 @@
 package controllers;
 
 import fx.MainApplication;
+import javafx.event.EventHandler;
+import javafx.scene.control.Button;
+import javafx.scene.input.MouseEvent;
 import model.MainModel;
 import fx.EmailListCell;
 import javafx.scene.control.Label;
@@ -18,9 +21,16 @@ import java.util.ResourceBundle;
 
 public class MainController extends BindableController implements Initializable {
 
-    private static final String RES_COMPOSE_LAYOUT = "../compose_email.fxml";
+    enum State {
+        INBOX,
+        SENT,
+        SPECIAL,
+        TRASH
+    }
 
-    private boolean isRunning = false;
+    @FXML private Button starButton;
+    @FXML private Button replyButton;
+
     @FXML private Label topBarTitle;
     @FXML private ImageView avatarImageHolder;
     @FXML private ListView<Email> emailListView;
@@ -35,6 +45,12 @@ public class MainController extends BindableController implements Initializable 
 
         // Email list view init
         emailListView.setCellFactory(new EmailListCell.EmailListCellFactory());
+        emailListView.setOnMouseClicked(event -> {
+            if(event.getClickCount() == 2) {
+                MainApplication.switchToShowMail(emailListView.getSelectionModel().getSelectedItem());
+            }
+        });
+
     }
 
     @FXML
@@ -44,50 +60,82 @@ public class MainController extends BindableController implements Initializable 
     }
 
     @FXML
-    private void replyButtonClick(ActionEvent event) throws IOException {
+    private void replyButtonClick() {
         Email email = emailListView.getSelectionModel().getSelectedItem();
         MainApplication.switchToCompose(email);
     }
 
     @FXML
-    private void composeButtonClick(ActionEvent event) {
+    private void composeButtonClick() {
         MainApplication.switchToCompose();
     }
 
     @FXML
-    private void replyAllButtonClick() {
-
+    private void starButtonClick() {
+        Email email = emailListView.getSelectionModel().getSelectedItem();
+        model.star(email);
     }
 
     /** +========+ SIDE NAVIGATION BAR BUTTONS HANDLERS +========+ **/
     @FXML
     private void inboxButtonClick() {
-        model.filter(Email.Type.RECEIVED);
-        topBarTitle.setText("Inbox");
+        setState(State.INBOX);
     }
 
     @FXML
     private void sentButtonClick() {
-        model.filter(Email.Type.SENT);
-        topBarTitle.setText("Sent");
+        setState(State.SENT);
     }
 
     @FXML
     private void specialButtonClick() {
-        model.filter(Email.Type.SPECIAL);
-        topBarTitle.setText("Specials");
+        setState(State.SPECIAL);
     }
 
     @FXML
     private void trashButtonClick() {
-        model.filter(Email.Type.TRASH);
-        topBarTitle.setText("Trash");
+        setState(State.TRASH);
     }
 
     @Override
     public void bindModel(MainModel model) {
         super.bindModel(model);
         model.bind(emailListView);              // Bind the ListView widget to the model
+    }
+
+    private void setState(State state) {
+        switch (state) {
+            case INBOX:
+                model.filter(Email.Type.RECEIVED);
+                replyButton.setVisible(true);
+                starButton.setVisible(true);
+                topBarTitle.setText("Inbox");
+            break;
+
+            case SENT:
+                model.filter(Email.Type.SENT);
+                replyButton.setVisible(false);
+                starButton.setVisible(false);
+                topBarTitle.setText("Sent");
+            break;
+
+            case SPECIAL:
+                model.filter(Email.Type.SPECIAL);
+                replyButton.setVisible(true);
+                starButton.setVisible(false);
+                topBarTitle.setText("Special");
+            break;
+
+            case TRASH:
+                replyButton.setVisible(false);
+                starButton.setVisible(false);
+                model.filter(Email.Type.TRASH);
+                topBarTitle.setText("Trash");
+            break;
+
+            default:
+                throw new IllegalArgumentException();
+        }
     }
 
 }

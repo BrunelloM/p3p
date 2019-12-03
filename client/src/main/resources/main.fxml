@@ -62,7 +62,7 @@
                <Insets bottom="20.0" top="30.0" />
             </VBox.margin>
          </Line>
-         <SideBarButton fx:id="inboxButton" alignment="TOP_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#inboxButtonClick" styleClass="inbox-btn" text="INBOX" textFill="WHITE" selected="true">
+         <SideBarButton fx:id="inboxButton" alignment="TOP_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#inboxButtonClick" selected="true" styleClass="inbox-btn" text="INBOX" textFill="WHITE">
             <font>
                <Font size="20.0" />
             </font>
@@ -151,7 +151,22 @@
                   </HBox.margin>
                </Label>
                <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-               <Button contentDisplay="GRAPHIC_ONLY" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#replyButtonClick" prefHeight="46.0" prefWidth="46.0" styleClass="circle-button">
+               <Button fx:id="starButton" contentDisplay="GRAPHIC_ONLY" layoutX="855.0" layoutY="19.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#starButtonClick" prefHeight="46.0" prefWidth="46.0" styleClass="circle-button">
+                  <font>
+                     <Font size="20.0" />
+                  </font>
+                  <graphic>
+                     <ImageView fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                           <Image url="@img/star_icon.png" />
+                        </image>
+                     </ImageView>
+                  </graphic>
+                  <HBox.margin>
+                     <Insets right="20.0" />
+                  </HBox.margin>
+               </Button>
+               <Button fx:id="replyButton" contentDisplay="GRAPHIC_ONLY" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#replyButtonClick" prefHeight="46.0" prefWidth="46.0" styleClass="circle-button">
                   <font>
                      <Font size="20.0" />
                   </font>
@@ -162,6 +177,9 @@
                         </image>
                      </ImageView>
                   </graphic>
+                  <HBox.margin>
+                     <Insets right="20.0" />
+                  </HBox.margin>
                </Button>
                <Button contentDisplay="GRAPHIC_ONLY" layoutX="190.0" layoutY="17.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#deleteButtonClick" prefHeight="46.0" prefWidth="46.0" styleClass="circle-button">
                   <font>
@@ -175,7 +193,7 @@
                      </ImageView>
                   </graphic>
                   <HBox.margin>
-                     <Insets left="20.0" right="40.0" />
+                     <Insets right="40.0" />
                   </HBox.margin>
                </Button>
             </HBox>

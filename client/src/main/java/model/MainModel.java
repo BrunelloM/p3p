@@ -7,15 +7,12 @@ import fx.MainApplication;
 import io.DataSource;
 import io.NetworkDataSource;
 import javafx.collections.transformation.FilteredList;
-import javafx.scene.control.Alert;
 import shared.protocol.Response;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.ListView;
 import shared.Email;
-
-import javax.management.Notification;
 import java.util.Objects;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -23,6 +20,8 @@ import java.util.concurrent.TimeUnit;
 import java.util.function.Predicate;
 
 /**
+ * TODO: Refactor in order to create the callback on the Controller class.
+ *
  * Model class of the MVC pattern.
  * It holds an observable (and filterable) dataset as well as the DataSource interface
  * on which it will interact in order to retrieve/modify/add data.
@@ -36,7 +35,7 @@ public class MainModel {
     private ObservableList<Email> dataset;
     private final DataSource dataSource;
 
-    private final Predicate<Email> inboxFilter = email -> email.getType() == Email.Type.RECEIVED;
+    private final Predicate<Email> inboxFilter = email -> email.getType() == Email.Type.RECEIVED || email.getType() == Email.Type.SPECIAL;
     private final Predicate<Email> sentFilter = email -> email.getType() == Email.Type.SENT;
     private final Predicate<Email> specialFilter = email -> email.getType() == Email.Type.SPECIAL;
     private final Predicate<Email> trashFilter = email -> email.getType() == Email.Type.TRASH;
@@ -76,7 +75,7 @@ public class MainModel {
     }
 
     /**
-     * Delete a specific Email from the DataSource..
+     * Delete a specific Email from the DataSource.
      * @param email Email to be deleted from the DataSource
      */
     public void delete(Email email) {

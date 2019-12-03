@@ -1,10 +1,9 @@
 package fx;
 
-import controllers.BindableController;
 import controllers.ComposeMailController;
 import controllers.MainController;
+import controllers.ShowMailController;
 import javafx.application.Application;
-import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
@@ -12,8 +11,6 @@ import javafx.stage.Stage;
 import javafx.fxml.FXMLLoader;
 import model.MainModel;
 import shared.Email;
-
-import java.io.IOException;
 import java.net.URL;
 
 public class MainApplication extends Application {
@@ -21,6 +18,7 @@ public class MainApplication extends Application {
     public static final String MAIN_CONTEXT = "../main.fxml";
     public static final String RES_STYLESHEET_MAIN = "../styles.css";
     public static final String COMPOSE_CONTEXT = "../compose_email.fxml";
+    public static final String SHOW_MAIL_CONTEXT = "../show_email.fxml";
 
     private MainModel model;
     private static StackPane contextSwitcher;
@@ -28,9 +26,11 @@ public class MainApplication extends Application {
     // Contexts (save references in order to switch between them)
     private static BorderPane composePane;
     private static BorderPane mainPane;
+    private static BorderPane showMailPane;
 
     private static MainController mainController;
     private static ComposeMailController composeController;
+    private static ShowMailController showMailController;
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -39,12 +39,13 @@ public class MainApplication extends Application {
         // Get the layout and resource files
         FXMLLoader mainLoader = new FXMLLoader(getClass().getResource(MAIN_CONTEXT));
         FXMLLoader composeLoader = new FXMLLoader(getClass().getResource(COMPOSE_CONTEXT));
+        FXMLLoader showMailLoader = new FXMLLoader(getClass().getResource(SHOW_MAIL_CONTEXT));
         // Load panes of the application
+        showMailPane = showMailLoader.load();
         composePane = composeLoader.load();
         mainPane = mainLoader.load();
-        // Set default look of the application (compose is not shown)
-        composePane.setVisible(false);
         // Add every Pane to the contextSwitcher children list
+        contextSwitcher.getChildren().add(showMailPane);
         contextSwitcher.getChildren().add(mainPane);
         contextSwitcher.getChildren().add(composePane);
         // Create a new scene with contextSwitcher as main panel
@@ -54,6 +55,7 @@ public class MainApplication extends Application {
         model = new MainModel();
         composeController = composeLoader.getController();
         mainController = mainLoader.getController();
+        showMailController = showMailLoader.getController();
 
         composeController.bindModel(model);
         mainController.bindModel(model);
@@ -74,13 +76,24 @@ public class MainApplication extends Application {
     }
 
     public static void switchToCompose() {
-        mainPane.setVisible(false);
         composePane.setVisible(true);
+        mainPane.setVisible(false);
+        showMailPane.setVisible(false);
     }
 
     public static void switchToMain() {
         mainPane.setVisible(true);
         composePane.setVisible(false);
+        showMailPane.setVisible(false);
+    }
+
+    public static void switchToShowMail(Email toShow) {
+        if(toShow != null) {
+            showMailController.show(toShow);
+            mainPane.setVisible(false);
+            composePane.setVisible(false);
+            showMailPane.setVisible(true);
+        }
     }
 
     public static void main(String[] args) {

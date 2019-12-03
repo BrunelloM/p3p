@@ -2,7 +2,6 @@ package controllers;
 
 import fx.MainApplication;
 import io.ConfigReader;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextArea;
