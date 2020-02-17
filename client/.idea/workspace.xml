@@ -7,6 +7,9 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
+  </component>
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -24,6 +27,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="1" />
+  </component>
   <component name="ProjectId" id="1TTGT1HZ3JfWHAGq2hPqq5V0CST" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -34,10 +40,11 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../shared" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
@@ -161,6 +168,13 @@
       <workItem from="1575209309888" duration="16235000" />
       <workItem from="1575315766150" duration="838000" />
       <workItem from="1575317529865" duration="11454000" />
+      <workItem from="1575391792038" duration="306000" />
+      <workItem from="1575537124329" duration="388000" />
+      <workItem from="1575751899035" duration="288000" />
+      <workItem from="1576488520225" duration="2191000" />
+      <workItem from="1576490833407" duration="2531000" />
+      <workItem from="1576494608523" duration="844000" />
+      <workItem from="1576495973553" duration="423000" />
     </task>
     <servers />
   </component>
@@ -187,6 +201,10 @@
     </ignored-roots>
   </component>
   <component name="WindowStateProjectService">
+    <state x="605" y="342" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1576491989655">
+      <screen x="0" y="38" width="1920" height="1042" />
+    </state>
+    <state x="605" y="342" key="#com.intellij.fileTypes.FileTypeChooser/0.38.1920.1042@0.38.1920.1042" timestamp="1576491989655" />
     <state x="721" y="192" width="468" height="730" key="#com.intellij.ide.util.MemberChooser" timestamp="1575380897267">
       <screen x="0" y="33" width="1920" height="1047" />
     </state>
@@ -195,21 +213,29 @@
       <screen x="0" y="33" width="1920" height="1047" />
     </state>
     <state x="627" y="244" width="655" height="626" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.33.1920.1047@0.33.1920.1047" timestamp="1575307719414" />
-    <state width="1856" height="327" key="GridCell.Tab.0.bottom" timestamp="1575382478060">
-      <screen x="0" y="33" width="1920" height="1047" />
+    <state x="695" y="254" width="530" height="610" key="FileChooserDialogImpl" timestamp="1576495995469">
+      <screen x="0" y="38" width="1920" height="1042" />
     </state>
-    <state width="1856" height="327" key="GridCell.Tab.0.bottom/0.33.1920.1047@0.33.1920.1047" timestamp="1575382478060" />
-    <state width="1856" height="327" key="GridCell.Tab.0.center" timestamp="1575382478057">
-      <screen x="0" y="33" width="1920" height="1047" />
+    <state x="695" y="254" width="530" height="610" key="FileChooserDialogImpl/0.38.1920.1042@0.38.1920.1042" timestamp="1576495995469" />
+    <state width="1860" height="267" key="GridCell.Tab.0.bottom" timestamp="1576494568171">
+      <screen x="0" y="38" width="1920" height="1042" />
     </state>
-    <state width="1856" height="327" key="GridCell.Tab.0.center/0.33.1920.1047@0.33.1920.1047" timestamp="1575382478057" />
-    <state width="1856" height="327" key="GridCell.Tab.0.left" timestamp="1575382478056">
-      <screen x="0" y="33" width="1920" height="1047" />
+    <state width="1856" height="327" key="GridCell.Tab.0.bottom/0.33.1920.1047@0.33.1920.1047" timestamp="1575392098278" />
+    <state width="1860" height="267" key="GridCell.Tab.0.bottom/0.38.1920.1042@0.38.1920.1042" timestamp="1576494568171" />
+    <state width="1860" height="267" key="GridCell.Tab.0.center" timestamp="1576494568168">
+      <screen x="0" y="38" width="1920" height="1042" />
     </state>
-    <state width="1856" height="327" key="GridCell.Tab.0.left/0.33.1920.1047@0.33.1920.1047" timestamp="1575382478056" />
-    <state width="1856" height="327" key="GridCell.Tab.0.right" timestamp="1575382478059">
-      <screen x="0" y="33" width="1920" height="1047" />
+    <state width="1856" height="327" key="GridCell.Tab.0.center/0.33.1920.1047@0.33.1920.1047" timestamp="1575392098277" />
+    <state width="1860" height="267" key="GridCell.Tab.0.center/0.38.1920.1042@0.38.1920.1042" timestamp="1576494568168" />
+    <state width="1860" height="267" key="GridCell.Tab.0.left" timestamp="1576494568166">
+      <screen x="0" y="38" width="1920" height="1042" />
     </state>
-    <state width="1856" height="327" key="GridCell.Tab.0.right/0.33.1920.1047@0.33.1920.1047" timestamp="1575382478059" />
+    <state width="1856" height="327" key="GridCell.Tab.0.left/0.33.1920.1047@0.33.1920.1047" timestamp="1575392098277" />
+    <state width="1860" height="267" key="GridCell.Tab.0.left/0.38.1920.1042@0.38.1920.1042" timestamp="1576494568166" />
+    <state width="1860" height="267" key="GridCell.Tab.0.right" timestamp="1576494568169">
+      <screen x="0" y="38" width="1920" height="1042" />
+    </state>
+    <state width="1856" height="327" key="GridCell.Tab.0.right/0.33.1920.1047@0.33.1920.1047" timestamp="1575392098278" />
+    <state width="1860" height="267" key="GridCell.Tab.0.right/0.38.1920.1042@0.38.1920.1042" timestamp="1576494568169" />
   </component>
 </project>

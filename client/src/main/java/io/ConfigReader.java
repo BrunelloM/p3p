@@ -2,8 +2,7 @@ package io;
 
 import shared.User;
 
-import java.io.FileInputStream;
-import java.io.IOException;
+import java.io.*;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.Properties;
@@ -16,6 +15,7 @@ public final class ConfigReader {
 
     private static User identity;
 
+    private static final String IDENTITY_PATH = "./identity.dat";
     private static final String CONFIG_PATH = "./config.ini";
     private static final String PARAM_THREADS  = "maxThreads";
     private static final String PARAM_ADDRESS = "serverAddress";
@@ -89,11 +89,17 @@ public final class ConfigReader {
      * @return The identity of the client. It has to be specified in the identity.dat file
      */
     public static User getIdentity() {
-        if(identity == null) {
-            identity = new User(0, "Ugo", "Sbrinzi", "ugo_sbrinzi@sbrinzer.com");
+        try {
+            if(identity == null) {
+                FileInputStream inStream = new FileInputStream(new File(IDENTITY_PATH));
+                BufferedReader reader = new BufferedReader(new InputStreamReader(inStream));
+                String[] lines = reader.readLine().split("\\s*;\\s*");
+                identity = new User(Integer.parseInt(lines[0]), lines[1], lines[2], lines[3]);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         return identity;
     }
-
 
 }

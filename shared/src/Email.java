@@ -102,4 +102,13 @@ public class Email implements Serializable {
     public Type getType() {
         return type;
     }
+
+    @Override 
+    public boolean equals(Object obj) {
+        if(((Email) obj) instanceof Email) {
+            return (((Email) obj).getId() == this.id); 
+        } else {
+            return false; 
+        }
+    }
 }

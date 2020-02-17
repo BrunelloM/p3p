@@ -1,20 +1,18 @@
 package controllers;
 
 import fx.MainApplication;
-import javafx.event.EventHandler;
+import io.ConfigReader;
 import javafx.scene.control.Button;
-import javafx.scene.input.MouseEvent;
 import model.MainModel;
 import fx.EmailListCell;
 import javafx.scene.control.Label;
 import shared.Email;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import java.io.IOException;
 import javafx.scene.control.ListView;
 import javafx.scene.image.ImageView;
 import javafx.scene.shape.Circle;
+import shared.User;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -28,6 +26,10 @@ public class MainController extends BindableController implements Initializable 
         TRASH
     }
 
+    @FXML private Label identityNameSurnameHolder;
+    @FXML private Label identityEmailHolder;
+
+    // Needs their reference in order to change their visibilities.
     @FXML private Button starButton;
     @FXML private Button replyButton;
 
@@ -37,6 +39,9 @@ public class MainController extends BindableController implements Initializable 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        identityEmailHolder.setText(ConfigReader.getIdentity().getAddress());
+        String nameSurname = ConfigReader.getIdentity().getName() + " " + ConfigReader.getIdentity().getSurname();
+        identityNameSurnameHolder.setText(nameSurname.toUpperCase());
         // Setup Circle avatar
         Circle circle = new Circle(64);
         circle.setCenterX(64);
@@ -53,30 +58,51 @@ public class MainController extends BindableController implements Initializable 
 
     }
 
+    /**
+     * Called upon deleteButton click event
+     */
     @FXML
     private void deleteButtonClick() {
         Email selected = emailListView.getSelectionModel().getSelectedItem();
-        model.delete(selected);
+        if(selected != null) {
+            model.delete(selected);
+        }
     }
 
+    /**
+     * Called upon replyButton click event
+     */
     @FXML
     private void replyButtonClick() {
         Email email = emailListView.getSelectionModel().getSelectedItem();
-        MainApplication.switchToCompose(email);
+        if(email != null) {
+            MainApplication.switchToCompose(email);
+        }
     }
 
+    /**
+     * Called upon composeButton click event
+     */
     @FXML
     private void composeButtonClick() {
         MainApplication.switchToCompose();
     }
 
+    /**
+     * Called upon starButton click event
+     */
     @FXML
     private void starButtonClick() {
         Email email = emailListView.getSelectionModel().getSelectedItem();
-        model.star(email);
+        if(email != null) {
+            model.star(email);
+        }
     }
 
     /** +========+ SIDE NAVIGATION BAR BUTTONS HANDLERS +========+ **/
+    /**
+     * Called upon side navigation buttons click events
+     */
     @FXML
     private void inboxButtonClick() {
         setState(State.INBOX);
@@ -103,6 +129,12 @@ public class MainController extends BindableController implements Initializable 
         model.bind(emailListView);              // Bind the ListView widget to the model
     }
 
+
+    /**
+     * Changes the UI application state.
+     * State is an enum structure.
+     * @param state The state that will be represented
+     */
     private void setState(State state) {
         switch (state) {
             case INBOX:

@@ -67,10 +67,13 @@ public class MainModel {
      * Platform.runLater tells the FXApplication to refresh data on the UI thread.
      */
     public void refresh() {
-        DataSource.DataSourceCallback<List<Email>> callback = item -> Platform.runLater(() -> {
-            dataset.clear();
-            dataset.addAll(item);
-        });
+        DataSource.DataSourceCallback<List<Email>> callback = item -> {
+            for(Email email : item) {
+                if(!dataset.contains(email)) {
+                    Platform.runLater(() -> dataset.add(email));
+                }
+            }
+        };
         dataSource.get(callback);
     }
 

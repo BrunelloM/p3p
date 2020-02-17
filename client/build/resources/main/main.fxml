@@ -10,10 +10,6 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="0.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="755.0" prefWidth="1241.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainController">
 
-   <fx:define>
-      <ToggleGroup fx:id="sideNav" />
-   </fx:define>
-
    <left>
       <VBox alignment="TOP_CENTER" blendMode="SRC_ATOP" maxHeight="1.7976931348623157E308" prefHeight="755.0" prefWidth="350.0" styleClass="primary-color-dark" BorderPane.alignment="CENTER">
          <BorderPane.margin>
@@ -25,7 +21,7 @@
             </VBox.margin>
             <Image url="@img/avatar.png" />
          </ImageView>
-         <Label text="BRUNELLO MATTEO" textFill="WHITE">
+         <Label fx:id="identityNameSurnameHolder" text="NAME SURNAME" textFill="WHITE">
             <font>
                <Font size="18.0" />
             </font>
@@ -33,7 +29,7 @@
                <Insets bottom="15.0" />
             </VBox.margin>
          </Label>
-         <Label text="brunello.mtt@gesu.com" textFill="WHITE">
+         <Label fx:id="identityEmailHolder" text="email.placeholder@email.com" textFill="WHITE">
             <font>
                <Font size="18.0" />
             </font>
@@ -62,7 +58,7 @@
                <Insets bottom="20.0" top="30.0" />
             </VBox.margin>
          </Line>
-         <SideBarButton fx:id="inboxButton" alignment="TOP_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#inboxButtonClick" selected="true" styleClass="inbox-btn" text="INBOX" textFill="WHITE">
+         <SideBarButton alignment="TOP_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#inboxButtonClick" selected="true" styleClass="inbox-btn" text="INBOX" textFill="WHITE">
             <font>
                <Font size="20.0" />
             </font>

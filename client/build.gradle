@@ -22,5 +22,5 @@ dependencies {
 }
 
 application {
-    mainClassName = "client.utils.ApplicationStarter"
+    mainClassName "utils.ApplicationStarter"
 }

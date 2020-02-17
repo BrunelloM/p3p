@@ -3,6 +3,7 @@ package fx;
 import controllers.ComposeMailController;
 import controllers.MainController;
 import controllers.ShowMailController;
+import io.ConfigReader;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
@@ -34,6 +35,7 @@ public class MainApplication extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
+        ConfigReader.getIdentity();
         URL styleSheet = getClass().getResource(RES_STYLESHEET_MAIN);
         contextSwitcher = new StackPane();
         // Get the layout and resource files
@@ -60,6 +62,7 @@ public class MainApplication extends Application {
         composeController.bindModel(model);
         mainController.bindModel(model);
 
+        stage.setTitle("Email client");
         stage.setScene(mainScene);
         stage.show();
     }
