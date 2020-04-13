@@ -3,7 +3,9 @@ Multi threaded Email application written in Java for an university exam.
 
 ## Instructions
 1. Clone the repository
-2. Use `gradlew` wrapper script to build and run (eg. `./gradlew appStart`)
+2. Build the shared class into the `shared` directory using the `build.sh` script
+3. Use `gradlew` wrapper script to build and run the server (eg. `./gradlew appStart`)
+4. Do the same for the client
 
 ## Notes
 I know that this codebase needs a giant refactor, plus most of the JavaFX code is not well written (I had no prior experience with the library). 
