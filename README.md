@@ -1,4 +1,4 @@
-# Prog project 
+# Prog 3 Project 
 Multi threaded Email application written in Java for an university exam. 
 
 ## Instructions
