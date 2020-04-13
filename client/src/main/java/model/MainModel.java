@@ -20,7 +20,6 @@ import java.util.concurrent.TimeUnit;
 import java.util.function.Predicate;
 
 /**
- * TODO: Refactor in order to create the callback on the Controller class.
  *
  * Model class of the MVC pattern.
  * It holds an observable (and filterable) dataset as well as the DataSource interface

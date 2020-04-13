@@ -15,7 +15,6 @@ import java.util.concurrent.Executors;
 
 public class NetworkDataSource implements DataSource {
 
-    private final Object CONNECTION_LOCK = 0;   // Connection lock, it avoids the creation of 2 or more connections in parallel
     private ExecutorService threadPool;         // Holds the workers for the requests
     private User clientIdentity;
     private String serverAddress;
@@ -33,20 +32,22 @@ public class NetworkDataSource implements DataSource {
         return new Socket(serverAddress, serverPort);
     }
 
+    /*
+     * Creates a new Runnable that sends a specific "binary" request.
+     * These type of requests are specific in order to send, delete, and star a specific Email.
+     */
     private Runnable sendBinaryRequest(Request request, DataSourceCallback<Response> callback) {
         return () -> {
-            try{
-                synchronized (CONNECTION_LOCK) {
-                    Socket connection = openConnection();
-                    ObjectOutputStream outputStream = new ObjectOutputStream(connection.getOutputStream());
-                    ObjectInputStream inputStream = new ObjectInputStream(connection.getInputStream());
-                    outputStream.writeObject(request);
-                    Response response = (Response) inputStream.readObject();
-                    callback.call(response);
-                    outputStream.close();
-                    inputStream.close();
-                    connection.close();
-                }
+            try {
+                Socket connection = openConnection();
+                ObjectOutputStream outputStream = new ObjectOutputStream(connection.getOutputStream());
+                ObjectInputStream inputStream = new ObjectInputStream(connection.getInputStream());
+                outputStream.writeObject(request);
+                Response response = (Response) inputStream.readObject();
+                callback.call(response);
+                outputStream.close();
+                inputStream.close();
+                connection.close();
             } catch (IOException | ClassNotFoundException e) {
                 e.printStackTrace();
             }
@@ -54,44 +55,42 @@ public class NetworkDataSource implements DataSource {
     }
 
     @Override
-    public void send(Email email, DataSourceCallback<Response> callback) {
+    public synchronized void send(Email email, DataSourceCallback<Response> callback) {
         Request request = new Request(clientIdentity.getAddress(), Request.Type.SEND, email);
         threadPool.execute(sendBinaryRequest(request, callback));
     }
 
     @Override
-    public void delete(Email email, DataSourceCallback<Response> callback) {
+    public synchronized void delete(Email email, DataSourceCallback<Response> callback) {
         Request request = new Request(clientIdentity.getAddress(), Request.Type.DELETE, email);
         threadPool.execute(sendBinaryRequest(request, callback));
     }
 
     @Override
-    public void star(Email email, DataSourceCallback<Response> callback) {
+    public synchronized void star(Email email, DataSourceCallback<Response> callback) {
         Request request = new Request(clientIdentity.getAddress(), Request.Type.STAR, email);
         threadPool.execute(sendBinaryRequest(request, callback));
     }
 
     @Override
-    public void get(DataSourceCallback<List<Email>> callback) {
+    public synchronized void get(DataSourceCallback<List<Email>> callback) {
         Runnable worker = () -> {
             try {
                 Request request = new Request(clientIdentity.getAddress(), Request.Type.GET, null);
-                synchronized (CONNECTION_LOCK) {
-                    Socket connection = openConnection();
-                    ObjectOutputStream outputStream = new ObjectOutputStream(connection.getOutputStream());
-                    ObjectInputStream inputStream = new ObjectInputStream(connection.getInputStream());
-                    outputStream.writeObject(request);
-                    List<Email> returnList = new ArrayList<>();
-                    Response response = (Response) inputStream.readObject();
-                    while (response.getType() == Response.Type.NEXT) {
-                        returnList.add(response.getPayload());
-                        response = (Response) inputStream.readObject();
-                    }
-                    callback.call(returnList);
-                    inputStream.close();
-                    outputStream.close();
-                    connection.close();
+                Socket connection = openConnection();
+                ObjectOutputStream outputStream = new ObjectOutputStream(connection.getOutputStream());
+                ObjectInputStream inputStream = new ObjectInputStream(connection.getInputStream());
+                outputStream.writeObject(request);
+                List<Email> returnList = new ArrayList<>();
+                Response response = (Response) inputStream.readObject();
+                while (response.getType() == Response.Type.NEXT) {
+                    returnList.add(response.getPayload());
+                    response = (Response) inputStream.readObject();
                 }
+                callback.call(returnList);
+                inputStream.close();
+                outputStream.close();
+                connection.close();
             } catch (IOException | ClassNotFoundException e) {
                 e.printStackTrace();
             }

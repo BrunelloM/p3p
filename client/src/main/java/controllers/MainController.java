@@ -52,7 +52,7 @@ public class MainController extends BindableController implements Initializable 
         emailListView.setCellFactory(new EmailListCell.EmailListCellFactory());
         emailListView.setOnMouseClicked(event -> {
             if(event.getClickCount() == 2) {
-                MainApplication.switchToShowMail(emailListView.getSelectionModel().getSelectedItem());
+                MainApplication.switchToShowMail(emailListView.getSelectionModel().getSelectedItem()); // Show the email when the email gets double clicked
             }
         });
 
